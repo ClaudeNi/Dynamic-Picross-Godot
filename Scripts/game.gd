@@ -98,13 +98,13 @@ func decide_Action(x, y, tilemap):
 	elif Input.is_action_pressed("right_click") and not state == -1 and not state == 3:
 		tilemap.set_cell(x,y,2)
 		state = 2
-	check_cell(str(x),str(y))
+	check_cell(str(x),str(y), state)
 
-func check_cell(x, y):
+func check_cell(x, y, state):
 	var ind2 = selected_cells.find(x + "," + y)
 	if not ind2 == -1:
 		selected_cells.pop_at(ind2)
-	else:
+	elif state == 1:
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
 		print("done")
