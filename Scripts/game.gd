@@ -1,6 +1,6 @@
 extends Node
 
-var selected_puzzle = "bunny"
+var selected_puzzle = ""
 
 var vertical_nums = []
 var horizontal_nums = []
