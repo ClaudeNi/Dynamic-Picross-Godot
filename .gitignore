@@ -10,6 +10,11 @@ override.cfg
 .import/
 export.cfg
 export_presets.cfg
+LICENSE
+README.md
+
+# Godot addons
+addons/
 
 # Mono-specific ignores
 .mono/
