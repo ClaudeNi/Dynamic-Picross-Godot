@@ -1,11 +1,12 @@
 extends Node2D
 
-onready var cell_node = preload("res://nodes/Cell.tscn")
 onready var img = load(Levels.select_puzzle(Game.selected_puzzle)).get_data()
 
 onready var tilemap = $TileMap
 onready var nums = $nums
 onready var label = $nums/Label
+onready var level_Finished = $LevelFinished
+onready var answer = $LevelFinished/Answer
 
 var SCALE
 var PREVIOUS_CELL = {}
@@ -27,7 +28,7 @@ func _input(event):
 			STOPPER = false
 			PREVIOUS_STATE = state
 		if (not PREVIOUS_CELL.get("x") == x or not PREVIOUS_CELL.get("y") == y) and PREVIOUS_STATE == state:
-			Game.decide_Action(x, y, tilemap)
+			Game.decide_Action(x, y, tilemap, level_Finished, answer)
 			PREVIOUS_CELL["x"] = x
 			PREVIOUS_CELL["y"] = y
 	if (Input.is_action_just_released("left_click") or Input.is_action_just_released("right_click")):

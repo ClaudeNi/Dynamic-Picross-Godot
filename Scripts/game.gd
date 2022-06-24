@@ -87,7 +87,7 @@ func ready_cells(img, WIDTH, HEIGHT, tilemap):
 			if COLOR == Color(0,0,0,1):
 				Game.black_cells.append(str(new_x) + "," + str(new_y))
 
-func decide_Action(x, y, tilemap):
+func decide_Action(x, y, tilemap, level_Finished, answer):
 	var state = tilemap.get_cell(x,y) # 0 = EMPTY / 1 = FULL / 2 = CROSSED
 	if not state == 0 and not state == -1 and not state == 3:
 		tilemap.set_cell(x,y,0)
@@ -98,16 +98,22 @@ func decide_Action(x, y, tilemap):
 	elif Input.is_action_pressed("right_click") and not state == -1 and not state == 3:
 		tilemap.set_cell(x,y,2)
 		state = 2
-	check_cell(str(x),str(y), state)
+	check_cell(str(x),str(y), state, level_Finished, answer)
 
-func check_cell(x, y, state):
+func check_cell(x, y, state, level_Finished, answer):
 	var ind2 = selected_cells.find(x + "," + y)
 	if not ind2 == -1:
 		selected_cells.pop_at(ind2)
 	elif state == 1:
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
-		print("done")
+		answer.text += selected_puzzle.to_upper()
+		level_Finished.visible = true
+		vertical_nums = []
+		horizontal_nums = []
+		black_cells = []
+		white_cells = []
+		selected_cells = []
 
 func compare_arrays():
 	for cell in black_cells:
