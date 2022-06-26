@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Picross"
-run/main_scene="res://nodes/Level Selection Screen.tscn"
+run/main_scene="res://nodes/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
