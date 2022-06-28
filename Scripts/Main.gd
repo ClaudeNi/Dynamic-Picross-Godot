@@ -17,6 +17,11 @@ const PIXEL = 16
 func _ready():
 	img.lock()
 	Game.ready_Game(img, tilemap, nums, label)
+	if img.get_width() > 10:
+		tilemap.scale.x = 2.2
+		tilemap.scale.y = 2.2
+		nums.rect_scale.x = 0.74
+		nums.rect_scale.y = 0.74
 
 func _input(event):
 	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")):

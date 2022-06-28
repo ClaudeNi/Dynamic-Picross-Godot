@@ -109,11 +109,7 @@ func check_cell(x, y, state, level_Finished, answer):
 	if compare_arrays():
 		answer.text += selected_puzzle.to_upper()
 		level_Finished.visible = true
-		vertical_nums = []
-		horizontal_nums = []
-		black_cells = []
-		white_cells = []
-		selected_cells = []
+		reset_level()
 
 func compare_arrays():
 	for cell in black_cells:
@@ -123,3 +119,10 @@ func compare_arrays():
 		if selected_cells.has(cell):
 			return false
 	return true 
+	
+func reset_level():
+	vertical_nums = []
+	horizontal_nums = []
+	black_cells = []
+	white_cells = []
+	selected_cells = []

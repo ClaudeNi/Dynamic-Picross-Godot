@@ -1,8 +1,6 @@
 extends Node
 
+var link = "res://assets/puzzles/"
+
 func select_puzzle(key):
-	match(key):
-		"bunny":
-			return "res://assets/puzzles/bunny.png"
-		"target":
-			return "res://assets/puzzles/target.png"
+	return (link + key + ".png")
