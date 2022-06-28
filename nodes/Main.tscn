@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/cell/empty.png" type="Texture" id=1]
-[ext_resource path="res://nodes/Main.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
 [ext_resource path="res://assets/cell/filled.png" type="Texture" id=3]
 [ext_resource path="res://assets/cell/crossed.png" type="Texture" id=4]
 [ext_resource path="res://assets/numbers/number.png" type="Texture" id=5]
