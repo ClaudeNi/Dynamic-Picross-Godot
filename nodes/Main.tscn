@@ -7,6 +7,13 @@
 [ext_resource path="res://assets/numbers/number.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/LevelButton.gd" type="Script" id=6]
 
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = SubResource( 2 )
+
 [sub_resource type="TileSet" id=1]
 0/name = "empty.png 0"
 0/texture = ExtResource( 1 )
@@ -65,13 +72,6 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://assets/Roboto-Black.ttf"
-
-[sub_resource type="DynamicFont" id=3]
-size = 32
-font_data = SubResource( 2 )
-
 [sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/Roboto-Black.ttf"
 
@@ -105,15 +105,7 @@ font_data = SubResource( 10 )
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="TileMap" type="TileMap" parent="."]
-scale = Vector2( 3, 3 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 16, 16 )
-format = 1
-
 [node name="nums" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="nums"]
 visible = false
@@ -124,6 +116,12 @@ custom_fonts/font = SubResource( 3 )
 text = "10"
 align = 1
 valign = 1
+
+[node name="TileMap" type="TileMap" parent="nums"]
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
 
 [node name="LevelFinished" type="Control" parent="."]
 visible = false
