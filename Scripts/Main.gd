@@ -7,6 +7,8 @@ onready var nums = $nums
 onready var label = $nums/Label
 onready var level_Finished = $LevelFinished
 onready var answer = $LevelFinished/Answer
+onready var hLine = $nums/hLine
+onready var vLine = $nums/vLine
 
 var SCALE
 var PREVIOUS_CELL = {}
@@ -17,6 +19,26 @@ const PIXEL = 16
 func _ready():
 	img.lock()
 	Game.ready_Game(img, tilemap, nums, label)
+	var vLines = img.get_width() / 5 - 1
+	var hLines = img.get_height() / 5 - 1
+	var vPos = (img.get_width() * 48) / (vLines + 1)
+	var vPos_y = Game.longest_horizontal * 48
+	var hPos = (img.get_height() * 48 ) / (hLines + 1)
+	var hPos_x = Game.longest_vertical * 48
+	for i in range(vLines):
+		var new_V_Line = vLine.duplicate()
+		new_V_Line.visible = true
+		new_V_Line.set_size(Vector2(4, img.get_height() * 48))
+		new_V_Line.set_position(Vector2(vPos - 2 + (Game.longest_vertical * 48),vPos_y))
+		nums.add_child(new_V_Line)
+		vPos += vPos
+	for i in range(hLines):
+		var new_H_Line = hLine.duplicate()
+		new_H_Line.visible = true
+		new_H_Line.set_size(Vector2(img.get_width() * 48, 4))
+		new_H_Line.set_position(Vector2(hPos_x,hPos + (Game.longest_horizontal * 48) - 2))
+		nums.add_child(new_H_Line)
+		hPos += hPos
 	#nums.set_position(Vector2(240, 0))
 	#if img.get_width() > 10:
 		#nums.rect_scale.x = 0.75

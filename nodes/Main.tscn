@@ -123,6 +123,18 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
+[node name="hLine" type="ColorRect" parent="nums"]
+visible = false
+margin_right = 16.0
+margin_bottom = 2.0
+color = Color( 0.972549, 0.694118, 0.584314, 1 )
+
+[node name="vLine" type="ColorRect" parent="nums"]
+visible = false
+margin_right = 8.0
+margin_bottom = 16.0
+color = Color( 0.972549, 0.694118, 0.584314, 1 )
+
 [node name="LevelFinished" type="Control" parent="."]
 visible = false
 margin_right = 1280.0
