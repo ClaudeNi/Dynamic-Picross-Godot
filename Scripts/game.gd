@@ -127,4 +127,6 @@ func reset_level():
 	black_cells = []
 	white_cells = []
 	selected_cells = []
+	longest_vertical = 0
+	longest_horizontal = 0
 	not_finished = true
