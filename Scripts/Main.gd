@@ -45,7 +45,7 @@ func _ready():
 		#nums.rect_scale.y = 0.75
 
 func _input(event):
-	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")):
+	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")) and Game.not_finished:
 		SCALE = tilemap.scale.x
 		var x = floor(event.position[0] / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))

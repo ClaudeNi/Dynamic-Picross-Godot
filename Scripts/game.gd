@@ -1,6 +1,7 @@
 extends Node
 
 var selected_puzzle = ""
+var not_finished = true
 
 var vertical_nums = []
 var horizontal_nums = []
@@ -109,7 +110,7 @@ func check_cell(x, y, state, level_Finished, answer):
 	if compare_arrays():
 		answer.text += selected_puzzle.to_upper()
 		level_Finished.visible = true
-		reset_level()
+		not_finished = false
 
 func compare_arrays():
 	for cell in black_cells:
@@ -126,3 +127,4 @@ func reset_level():
 	black_cells = []
 	white_cells = []
 	selected_cells = []
+	not_finished = true
