@@ -15,6 +15,10 @@ var PREVIOUS_CELL = {}
 var PREVIOUS_STATE
 var STOPPER = true
 const PIXEL = 16
+var SCALING = {
+	"10": 0.9,
+	"15": 0.75
+}
 
 func _ready():
 	img.lock()
@@ -40,16 +44,16 @@ func _ready():
 		nums.add_child(new_H_Line)
 		hPos += hPos
 	#nums.set_position(Vector2(240, 0))
-	if img.get_width() > 10:
-		nums.rect_scale.x = 0.75
-		nums.rect_scale.y = 0.75
+	nums.rect_scale.x = SCALING[str(img.get_width())]
+	nums.rect_scale.y = SCALING[str(img.get_width())]
 
 func _input(event):
+	if event is InputEventMouseMotion:
+		pass
+		#print(event.position)
 	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")) and Game.not_finished:
 		img.lock()
-		SCALE = tilemap.scale.x
-		if img.get_width() > 10:
-			SCALE *= 0.75
+		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
 		var x = floor(event.position[0] / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))
 		var state = tilemap.get_cell(x,y)
@@ -63,5 +67,3 @@ func _input(event):
 	if (Input.is_action_just_released("left_click") or Input.is_action_just_released("right_click")):
 		STOPPER = true
 		PREVIOUS_CELL.clear()
-	#print(Game.vertical_nums)
-	#print(Game.horizontal_nums)
