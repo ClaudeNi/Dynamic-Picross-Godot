@@ -111,6 +111,7 @@ func check_cell(x, y, state, level_Finished, answer):
 		answer.text += selected_puzzle.to_upper()
 		level_Finished.visible = true
 		not_finished = false
+		Levels.beaten_levels.append(selected_puzzle)
 
 func compare_arrays():
 	for cell in black_cells:
