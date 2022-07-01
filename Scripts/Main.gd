@@ -14,6 +14,7 @@ var SCALE
 var PREVIOUS_CELL = {}
 var PREVIOUS_STATE
 var STOPPER = true
+var PREVIOUS_HOVER_CELL = {}
 const PIXEL = 16
 var SCALING = {
 	"10": 0.9,
@@ -48,9 +49,19 @@ func _ready():
 	nums.rect_scale.y = SCALING[str(img.get_width())]
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		pass
-		#print(event.position)
+	if event is InputEventMouseMotion and Game.not_finished:
+		img.lock()
+		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
+		var x = floor(event.position[0] / (PIXEL * SCALE))
+		var y = floor(event.position[1] / (PIXEL * SCALE))
+		var state = tilemap.get_cell(x,y)
+		if (not PREVIOUS_HOVER_CELL.get("x") == x or not PREVIOUS_HOVER_CELL.get("y") == y) and (state == 0 or state == 1 or state == 2):
+			Game.hover_nums(x, y, tilemap, PREVIOUS_HOVER_CELL)
+			PREVIOUS_HOVER_CELL["x"] = x
+			PREVIOUS_HOVER_CELL["y"] = y
+		elif not state == 0 and not state == 1 and not state == 2:
+			Game.clear_hover_nums(PREVIOUS_HOVER_CELL.get("x"), PREVIOUS_HOVER_CELL.get("y"), tilemap)
+			PREVIOUS_HOVER_CELL.clear()
 	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")) and Game.not_finished:
 		img.lock()
 		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]

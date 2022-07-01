@@ -130,3 +130,28 @@ func reset_level():
 	longest_vertical = 0
 	longest_horizontal = 0
 	not_finished = true
+
+func hover_nums(x, y, tilemap, previous):
+	var prev_x = previous.get("x")
+	var prev_y = previous.get("y")
+	clear_hover_nums(prev_x, prev_y, tilemap)
+	for i in range(longest_vertical):
+		var state = tilemap.get_cell(i,y)
+		if state == 3:
+			tilemap.set_cell(i,y,4)
+	for j in range(longest_horizontal):
+		var state = tilemap.get_cell(x,j)
+		if state == 3:
+			tilemap.set_cell(x,j,4)
+
+func clear_hover_nums(x, y, tilemap):
+	if not y == null:
+		for i in range(longest_vertical):
+			var state = tilemap.get_cell(i,y)
+			if state == 4:
+				tilemap.set_cell(i,y,3)
+	if not x == null:
+		for j in range(longest_horizontal):
+			var state = tilemap.get_cell(x,j)
+			if state == 4:
+				tilemap.set_cell(x,j,3)
