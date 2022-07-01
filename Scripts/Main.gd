@@ -25,14 +25,14 @@ func _ready():
 	var vPos_y = Game.longest_horizontal * 48
 	var hPos = (img.get_height() * 48 ) / (hLines + 1)
 	var hPos_x = Game.longest_vertical * 48
-	for i in range(vLines):
+	for _i in range(vLines):
 		var new_V_Line = vLine.duplicate()
 		new_V_Line.visible = true
 		new_V_Line.set_size(Vector2(4, img.get_height() * 48))
 		new_V_Line.set_position(Vector2(vPos - 2 + (Game.longest_vertical * 48),vPos_y))
 		nums.add_child(new_V_Line)
 		vPos += vPos
-	for i in range(hLines):
+	for _i in range(hLines):
 		var new_H_Line = hLine.duplicate()
 		new_H_Line.visible = true
 		new_H_Line.set_size(Vector2(img.get_width() * 48, 4))
@@ -40,13 +40,16 @@ func _ready():
 		nums.add_child(new_H_Line)
 		hPos += hPos
 	#nums.set_position(Vector2(240, 0))
-	#if img.get_width() > 10:
-		#nums.rect_scale.x = 0.75
-		#nums.rect_scale.y = 0.75
+	if img.get_width() > 10:
+		nums.rect_scale.x = 0.75
+		nums.rect_scale.y = 0.75
 
 func _input(event):
 	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")) and Game.not_finished:
+		img.lock()
 		SCALE = tilemap.scale.x
+		if img.get_width() > 10:
+			SCALE *= 0.75
 		var x = floor(event.position[0] / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))
 		var state = tilemap.get_cell(x,y)
