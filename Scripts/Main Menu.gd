@@ -2,6 +2,9 @@ extends Control
 
 onready var btn1 = $Button
 
+func _ready():
+	Save.load_data()
+
 func _on_Button_pressed():
 	get_tree().change_scene("res://nodes/Level Selection Screen.tscn")
 
