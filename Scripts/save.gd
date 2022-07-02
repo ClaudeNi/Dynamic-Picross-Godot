@@ -24,3 +24,8 @@ func load_data():
 	file.close()
 	
 	Levels.beaten_levels = game_data["beaten_levels"]
+
+func delete_data():
+	var dir = Directory.new()
+	dir.remove("user://save_file.save")
+	load_data()

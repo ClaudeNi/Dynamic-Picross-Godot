@@ -9,7 +9,7 @@ onready var label = $Label
 
 
 func _ready():
-	if Levels.beaten_levels.has(PUZZLE_NAME):
+	if Save.game_data["beaten_levels"].has(PUZZLE_NAME):
 		sprite.texture = texture_link
 		label.text = PUZZLE_NAME.capitalize()
 		
