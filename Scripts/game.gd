@@ -44,6 +44,10 @@ func ready_nums(img, WIDTH, HEIGHT):
 			h_nums_line.append(h_num)
 		if not v_num == 0:
 			v_nums_line.append(v_num)
+		if h_nums_line.size() == 0:
+			h_nums_line.append(0)
+		if v_nums_line.size() == 0:
+			v_nums_line.append(0)
 		h_nums_line.invert()
 		v_nums_line.invert()
 		horizontal_nums.append(h_nums_line)
