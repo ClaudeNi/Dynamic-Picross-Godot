@@ -14,29 +14,35 @@ font_data = SubResource( 12 )
 [node name="Level Selection Screen" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Level Selector" parent="." instance=ExtResource( 1 )]
-position = Vector2( 513, 142 )
-PUZZLE_NAME = "bunny"
+[node name="Control" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 60.0
+margin_right = 1240.0
+margin_bottom = 660.0
 
-[node name="Level Selector2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 110, 141 )
+[node name="Level Selector1" parent="Control" instance=ExtResource( 1 )]
+position = Vector2( 120, 0 )
 PUZZLE_NAME = "target"
 
-[node name="Level Selector3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 896, 420 )
-PUZZLE_NAME = "godot"
+[node name="Level Selector2" parent="Control" instance=ExtResource( 1 )]
+position = Vector2( 500, 0 )
+PUZZLE_NAME = "bunny"
 
-[node name="Level Selector4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 897, 130 )
+[node name="Level Selector3" parent="Control" instance=ExtResource( 1 )]
+position = Vector2( 880, 0 )
 PUZZLE_NAME = "github"
 
-[node name="Level Selector5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 513, 426 )
+[node name="Level Selector4" parent="Control" instance=ExtResource( 1 )]
+position = Vector2( 120, 360 )
+PUZZLE_NAME = "apple"
+
+[node name="Level Selector5" parent="Control" instance=ExtResource( 1 )]
+position = Vector2( 500, 360 )
 PUZZLE_NAME = "phone"
 
-[node name="Level Selector6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 115, 433 )
-PUZZLE_NAME = "apple"
+[node name="Level Selector6" parent="Control" instance=ExtResource( 1 )]
+position = Vector2( 880, 360 )
+PUZZLE_NAME = "godot"
 
 [node name="Button2" type="Button" parent="."]
 modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
