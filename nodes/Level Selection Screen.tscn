@@ -5,12 +5,25 @@
 [node name="Level Selection Screen" type="Node2D"]
 
 [node name="Level Selector" parent="." instance=ExtResource( 1 )]
+position = Vector2( 513, 142 )
 PUZZLE_NAME = "bunny"
 
 [node name="Level Selector2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 300, 0 )
+position = Vector2( 110, 141 )
 PUZZLE_NAME = "target"
 
 [node name="Level Selector3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 552, 0 )
+position = Vector2( 896, 420 )
 PUZZLE_NAME = "godot"
+
+[node name="Level Selector4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 897, 130 )
+PUZZLE_NAME = "github"
+
+[node name="Level Selector5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 513, 426 )
+PUZZLE_NAME = "phone"
+
+[node name="Level Selector6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 115, 433 )
+PUZZLE_NAME = "apple"
