@@ -115,6 +115,7 @@ font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=11]
 size = 24
+use_filter = true
 font_data = SubResource( 12 )
 
 [node name="Main" type="Node2D"]
@@ -181,11 +182,12 @@ margin_right = 640.0
 margin_bottom = 38.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "It was a "
+text = "It was "
 align = 1
 valign = 1
 
 [node name="Button" type="Button" parent="LevelFinished"]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -196,15 +198,18 @@ margin_right = 81.0
 margin_bottom = -120.0
 custom_fonts/font = SubResource( 9 )
 text = "  Go back  "
+flat = true
 script = ExtResource( 6 )
 
 [node name="Button" type="Button" parent="."]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
 margin_left = 1178.0
 margin_top = 683.0
 margin_right = 1278.0
 margin_bottom = 718.0
 custom_fonts/font = SubResource( 11 )
 text = "Go Back"
+flat = true
 
 [connection signal="pressed" from="LevelFinished/Button" to="LevelFinished/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="LevelFinished/Button" method="_on_Button_pressed"]

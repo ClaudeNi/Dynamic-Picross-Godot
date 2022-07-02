@@ -163,6 +163,7 @@ margin_right = 1240.0
 margin_bottom = 660.0
 
 [node name="Button" type="Button" parent="Control"]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -176,6 +177,7 @@ text = "Start Game"
 flat = true
 
 [node name="Button3" type="Button" parent="Control"]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -188,6 +190,7 @@ text = "Options"
 flat = true
 
 [node name="Button2" type="Button" parent="Control"]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

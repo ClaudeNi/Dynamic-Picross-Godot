@@ -15,7 +15,8 @@ func load_data():
 	var file = File.new()
 	if not file.file_exists(SAVE_FILE):
 		game_data = {
-			"beaten_levels": []
+			"beaten_levels": [],
+			"music_muted": false
 		}
 		save_data()
 	file.open(SAVE_FILE, File.READ)
