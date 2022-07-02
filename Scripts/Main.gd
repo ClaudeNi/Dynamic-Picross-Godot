@@ -18,7 +18,7 @@ var PREVIOUS_HOVER_CELL = {}
 const PIXEL = 16
 var SCALING = {
 	"10": 0.9,
-	"15": 0.75
+	"15": 0.70
 }
 
 func _ready():

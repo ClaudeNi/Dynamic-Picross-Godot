@@ -51,6 +51,7 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 Save="*res://Scripts/save.gd"
+AudioPlayer="*res://nodes/Audio Player.tscn"
 
 [display]
 
