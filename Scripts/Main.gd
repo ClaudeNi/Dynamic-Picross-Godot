@@ -44,7 +44,6 @@ func _ready():
 		new_H_Line.set_position(Vector2(hPos_x,hPos + (Game.longest_horizontal * 48) - 2))
 		nums.add_child(new_H_Line)
 		hPos += hPos
-	#nums.set_position(Vector2(240, 0))
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
 

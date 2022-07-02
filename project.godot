@@ -39,8 +39,10 @@ _global_script_class_icons={
 [application]
 
 config/name="Picross"
+config/description="A picross game that dynamically loads the level from a black and white image."
 run/main_scene="res://nodes/Main Menu.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://favicon.ico"
 
 [autoload]
 
