@@ -1,4 +1,4 @@
-#Dynamic Picross Game
+Dynamic Picross Game  
 
 https://claude-ni.itch.io/picross
 
