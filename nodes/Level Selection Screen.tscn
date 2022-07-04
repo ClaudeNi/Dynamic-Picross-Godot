@@ -23,26 +23,32 @@ margin_bottom = 660.0
 [node name="Level Selector1" parent="Control" instance=ExtResource( 1 )]
 position = Vector2( 120, 0 )
 PUZZLE_NAME = "target"
+PUZZLE_NUMBER = 1
 
 [node name="Level Selector2" parent="Control" instance=ExtResource( 1 )]
 position = Vector2( 500, 0 )
 PUZZLE_NAME = "bunny"
+PUZZLE_NUMBER = 2
 
 [node name="Level Selector3" parent="Control" instance=ExtResource( 1 )]
 position = Vector2( 880, 0 )
 PUZZLE_NAME = "github"
+PUZZLE_NUMBER = 3
 
 [node name="Level Selector4" parent="Control" instance=ExtResource( 1 )]
 position = Vector2( 120, 360 )
 PUZZLE_NAME = "apple"
+PUZZLE_NUMBER = 4
 
 [node name="Level Selector5" parent="Control" instance=ExtResource( 1 )]
 position = Vector2( 500, 360 )
 PUZZLE_NAME = "phone"
+PUZZLE_NUMBER = 5
 
 [node name="Level Selector6" parent="Control" instance=ExtResource( 1 )]
 position = Vector2( 880, 360 )
 PUZZLE_NAME = "godot"
+PUZZLE_NUMBER = 6
 
 [node name="Button2" type="Button" parent="."]
 modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
