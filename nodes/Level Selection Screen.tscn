@@ -12,6 +12,7 @@ use_filter = true
 font_data = SubResource( 12 )
 
 [node name="Level Selection Screen" type="Node2D"]
+visible = false
 script = ExtResource( 2 )
 
 [node name="Control" type="Control" parent="."]

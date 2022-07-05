@@ -19,4 +19,4 @@ func _ready():
 
 func _on_Button_pressed():
 	Game.selected_puzzle = PUZZLE_NAME
-	get_tree().change_scene("res://nodes/Main.tscn")
+	get_tree().change_scene("res://nodes/Level.tscn")

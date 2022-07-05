@@ -6,57 +6,57 @@
 [ext_resource path="res://assets/options/floppy.png" type="Texture" id=4]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFontData" id=16]
+[sub_resource type="DynamicFontData" id=24]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=17]
 size = 128
-font_data = SubResource( 16 )
+font_data = SubResource( 24 )
 
-[sub_resource type="DynamicFontData" id=18]
+[sub_resource type="DynamicFontData" id=25]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=19]
 size = 32
 use_filter = true
-font_data = SubResource( 18 )
+font_data = SubResource( 25 )
 
-[sub_resource type="DynamicFontData" id=20]
+[sub_resource type="DynamicFontData" id=26]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=21]
 size = 48
-font_data = SubResource( 20 )
+font_data = SubResource( 26 )
 
-[sub_resource type="DynamicFontData" id=22]
+[sub_resource type="DynamicFontData" id=27]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=23]
 size = 380
-font_data = SubResource( 22 )
+font_data = SubResource( 27 )
 
-[sub_resource type="DynamicFontData" id=12]
+[sub_resource type="DynamicFontData" id=28]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=13]
 size = 200
-font_data = SubResource( 12 )
+font_data = SubResource( 28 )
 
-[sub_resource type="DynamicFontData" id=10]
+[sub_resource type="DynamicFontData" id=29]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=11]
 size = 24
 use_filter = true
-font_data = SubResource( 10 )
+font_data = SubResource( 29 )
 
-[sub_resource type="DynamicFontData" id=14]
+[sub_resource type="DynamicFontData" id=30]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=15]
 size = 32
 use_filter = true
-font_data = SubResource( 14 )
+font_data = SubResource( 30 )
 
 [node name="Options Screen" type="Node2D"]
 script = ExtResource( 1 )

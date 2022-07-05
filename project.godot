@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="Picross"
 config/description="A picross game that dynamically loads the level from a black and white image."
-run/main_scene="res://nodes/Main Menu.tscn"
+run/main_scene="res://nodes/Menus.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://favicon.ico"
 
