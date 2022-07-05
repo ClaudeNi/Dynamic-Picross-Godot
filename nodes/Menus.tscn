@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://nodes/Level Selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/numbers/hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/options/music.png" type="Texture" id=12]
 [ext_resource path="res://assets/options/music mute.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/Options Screen.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=15]
 resource_name = "Levels to Start"
@@ -757,6 +758,7 @@ flat = true
 margin_left = -1280.0
 margin_right = -1240.0
 margin_bottom = 40.0
+script = ExtResource( 14 )
 
 [node name="Options" type="Control" parent="Screens/Options Screen"]
 margin_right = 1280.0
@@ -914,4 +916,9 @@ text = "Credit to p0ss and rezoner on opengameart.org for some of the sounds use
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/QuitBtn" to="." method="_on_QuitBtn_pressed"]
 [connection signal="pressed" from="Screens/Level Select Screen/LevelsGoBackBtn" to="." method="_on_LevelsGoBackBtn_pressed"]
+[connection signal="pressed" from="Screens/Options Screen/Options/Delete/DeleteBtn" to="Screens/Options Screen" method="_on_DeleteBtn_pressed"]
+[connection signal="pressed" from="Screens/Options Screen/Options/Delete/AreYouSure/NoBtn" to="Screens/Options Screen" method="_on_NoBtn_pressed"]
+[connection signal="pressed" from="Screens/Options Screen/Options/Delete/AreYouSure/YesBtn" to="Screens/Options Screen" method="_on_YesBtn_pressed"]
+[connection signal="toggled" from="Screens/Options Screen/Options/HowToPlay/HowCheckBox" to="Screens/Options Screen" method="_on_HowCheckBox_toggled"]
+[connection signal="toggled" from="Screens/Options Screen/Options/CheckBox" to="Screens/Options Screen" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="Screens/Options Screen/OptionsGoBackBtn" to="." method="_on_OptionsGoBackBtn_pressed"]

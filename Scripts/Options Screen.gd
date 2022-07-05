@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 onready var check_box = $Options/CheckBox
 
