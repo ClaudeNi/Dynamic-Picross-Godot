@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://nodes/Level Selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -563,6 +563,9 @@ font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=23]
 size = 200
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
 font_data = SubResource( 16 )
 
 [sub_resource type="DynamicFontData" id=18]
@@ -585,6 +588,8 @@ font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=26]
 size = 380
+outline_size = 15
+outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 22 )
 
 [sub_resource type="StyleBoxFlat" id=44]
@@ -611,14 +616,6 @@ font_path = "res://assets/Roboto-Black.ttf"
 size = 24
 use_filter = true
 font_data = SubResource( 29 )
-
-[sub_resource type="DynamicFontData" id=31]
-font_path = "res://assets/Roboto-Black.ttf"
-
-[sub_resource type="DynamicFont" id=32]
-size = 32
-use_filter = true
-font_data = SubResource( 31 )
 
 [node name="Menus" type="Control"]
 anchor_right = 1.0
@@ -996,9 +993,10 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = -40.0
-margin_right = 1120.0
+margin_right = 1193.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 32 )
+rect_scale = Vector2( 0.9, 0.9 )
+theme = ExtResource( 17 )
 text = "Credit to p0ss and rezoner on opengameart.org for some of the sounds used."
 
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/StartBtn" to="." method="_on_StartBtn_pressed"]
