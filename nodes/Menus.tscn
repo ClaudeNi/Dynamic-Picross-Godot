@@ -923,9 +923,9 @@ valign = 1
 
 [node name="Music" type="Label" parent="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic"]
 margin_left = 853.0
-margin_top = 28.0
+margin_top = 24.0
 margin_right = 956.0
-margin_bottom = 66.0
+margin_bottom = 62.0
 theme = ExtResource( 17 )
 text = "Music:"
 align = 1
@@ -966,9 +966,9 @@ valign = 1
 
 [node name="SoundEffects" type="Label" parent="Screens/Options Screen/Options/VolumeSliders/SoundEffects"]
 margin_left = 730.0
-margin_top = 28.0
+margin_top = 24.0
 margin_right = 956.0
-margin_bottom = 66.0
+margin_bottom = 62.0
 theme = ExtResource( 17 )
 text = "Sound Effects:"
 align = 1
