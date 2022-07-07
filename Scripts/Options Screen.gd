@@ -2,28 +2,20 @@ extends Control
 
 onready var check_box = $Options/CheckBox
 
+onready var bg_slider = $Options/VolumeSliders/BackgroundMusic/BackgroundSlider
+onready var bg_label = $Options/VolumeSliders/BackgroundMusic/BackgroundLabel
+onready var se_slider = $Options/VolumeSliders/SoundEffects/SoundEffectsSlider
+onready var se_label = $Options/VolumeSliders/SoundEffects/SoundEffectsLabel
+
 onready var AreYouSure = $Options/Delete/AreYouSure
 onready var HowTo = $Options/HowToPlay/HowTo
 
 func _ready():
-	if Save.game_data["music_muted"]:
-		check_box.pressed = true
-
-
-func _on_Button2_pressed():
-	AudioPlayer.play_SF_track(AudioPlayer.menu1)
-	get_tree().change_scene("res://nodes/Main Menu.tscn")
-
-
-func _on_CheckBox_toggled(button_pressed):
-	if button_pressed:
-		AudioPlayer.audioBG.stop()
-		Save.game_data["music_muted"] = true
-	else:
+	update_BG()
+	update_SE()
+	if not Save.coming_back_from_level:
 		AudioPlayer.play_BG_track(AudioPlayer.puzzle_bg)
-		Save.game_data["music_muted"] = false
-	Save.save_data()
-
+	
 
 func _on_NoBtn_pressed():
 	AreYouSure.visible = false
@@ -31,6 +23,8 @@ func _on_NoBtn_pressed():
 
 func _on_YesBtn_pressed():
 	Save.delete_data()
+	update_BG()
+	update_SE()
 	AreYouSure.visible = false
 
 
@@ -43,3 +37,37 @@ func _on_HowCheckBox_toggled(button_pressed):
 		HowTo.visible = true
 	else:
 		HowTo.visible = false
+
+
+func _on_BackgroundSlider_value_changed(value):
+	bg_label.text = str(value * 10)
+	AudioPlayer.set_BG_volume(linear2db(value))
+	Save.game_data["bg_volume"] = value
+	Save.save_data()
+
+
+func _on_BackgroundSlider_mouse_exited():
+	bg_slider.release_focus()
+
+
+func _on_SoundEffectsSlider_value_changed(value):
+	se_label.text = str(value * 10)
+	AudioPlayer.set_SE_volume(linear2db(value))
+	Save.game_data["se_volume"] = value
+	Save.save_data()
+
+
+func _on_SoundEffectsSlider_mouse_exited():
+	se_slider.release_focus()
+
+
+func update_BG():
+	bg_slider.value = Save.game_data["bg_volume"]
+	AudioPlayer.set_BG_volume(linear2db(bg_slider.value))
+	bg_label.text = str(Save.game_data["bg_volume"] * 10)
+
+
+func update_SE():
+	se_slider.value = Save.game_data["se_volume"]
+	AudioPlayer.set_SE_volume(linear2db(se_slider.value))
+	se_label.text = str(Save.game_data["se_volume"] * 10)

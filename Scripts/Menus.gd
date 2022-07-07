@@ -16,21 +16,26 @@ func quit_game():
 
 
 func _on_StartBtn_pressed():
+	AudioPlayer.play_SE_track(AudioPlayer.menu1)
 	anim.play("Start to Levels")
 
 
 func _on_OptionsBtn_pressed():
+	AudioPlayer.play_SE_track(AudioPlayer.menu1)
 	anim.play("Start to Options")
 
 
 func _on_QuitBtn_pressed():
+	AudioPlayer.play_SE_track(AudioPlayer.menu2)
 	anim.play("Quit Game")
 
 
 func _on_LevelsGoBackBtn_pressed():
+	AudioPlayer.play_SE_track(AudioPlayer.menu2)
 	anim.play("Levels to Start")
 
 
 func _on_OptionsGoBackBtn_pressed():
+	AudioPlayer.play_SE_track(AudioPlayer.menu2)
+	
 	anim.play("Options to Start")
-	pass # Replace with function body.

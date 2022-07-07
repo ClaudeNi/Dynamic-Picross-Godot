@@ -17,4 +17,3 @@ addons/
 # Mono-specific ignores
 .mono/
 data_*/
-
