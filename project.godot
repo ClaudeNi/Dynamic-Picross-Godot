@@ -54,6 +54,8 @@ UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 Save="*res://Scripts/save.gd"
 AudioPlayer="*res://nodes/Audio Player.tscn"
+Anim2="*res://nodes/Anim2.tscn"
+Anim="*res://nodes/Anim.tscn"
 
 [display]
 
@@ -102,6 +104,10 @@ right_click={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 

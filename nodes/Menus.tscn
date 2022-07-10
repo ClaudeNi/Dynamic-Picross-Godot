@@ -1,6 +1,6 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=58 format=2]
 
-[ext_resource path="res://nodes/Level Selector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Level Selector Button.gd" type="Script" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
 [ext_resource path="res://assets/options/floppy.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Menus.gd" type="Script" id=4]
@@ -11,81 +11,62 @@
 [ext_resource path="res://assets/numbers/number.png" type="Texture" id=9]
 [ext_resource path="res://assets/cell/empty.png" type="Texture" id=10]
 [ext_resource path="res://assets/numbers/hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/question.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/Options Screen.gd" type="Script" id=14]
 [ext_resource path="res://assets/options/volume bg.png" type="Texture" id=15]
 [ext_resource path="res://assets/options/volume slider.png" type="Texture" id=16]
 [ext_resource path="res://resources/Label.tres" type="Theme" id=17]
+[ext_resource path="res://Scripts/Level Selector.gd" type="Script" id=18]
 [ext_resource path="res://assets/options/volume bg empty.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Level Selection Screen.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Levels Grid.gd" type="Script" id=21]
+[ext_resource path="res://nodes/Anim.tscn" type="PackedScene" id=22]
 
-[sub_resource type="Animation" id=15]
-resource_name = "Levels to Start"
-length = 0.7
+[sub_resource type="Animation" id=61]
+resource_name = "Level Screen Fade In"
+length = 0.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens/Main Menu Screen:rect_position")
+tracks/0/path = NodePath("Menus/Screens/Level Select Screen/LevelFade:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -1280, 0 ), Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menus/Screens/Main Menu Screen:modulate")
+tracks/1/path = NodePath("Menus/Screens/Level Select Screen/LevelFade/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Menus/Screens/Level Select Screen:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Menus/Screens/Level Select Screen:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+
+[sub_resource type="Animation" id=48]
+resource_name = "Levels to Start"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("@@6115/Menus/Screens/Level Select Screen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1280, 0 ) ]
 }
-
-[sub_resource type="Animation" id=33]
-resource_name = "Options to Start"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens/Options Screen:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -1280, 0 ) ]
-}
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menus/Screens/Options Screen:modulate")
+tracks/1/path = NodePath("@@6115/Menus/Screens/Level Select Screen:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -97,7 +78,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Menus/Screens/Main Menu Screen:rect_position")
+tracks/2/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -106,10 +87,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1280, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( -1280, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Menus/Screens/Main Menu Screen:modulate")
+tracks/3/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -121,11 +102,26 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Quit Game"
+[sub_resource type="Animation" id=59]
+resource_name = "New Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("@@6115/Menus/Screens:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 21.8 ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "Options to Start"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens:rect_position")
+tracks/0/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -134,24 +130,74 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -720 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("Menus")
+tracks/1/type = "value"
+tracks/1/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "quit_game"
-} ]
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Menus/Screens/Main Menu Screen/Fade:visible")
+tracks/2/path = NodePath("@@6115/Menus/Screens/Options Screen:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1280, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("@@6115/Menus/Screens/Options Screen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "Quit Game"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Menus/Screens/Main Menu Screen/Fade:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 720 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -720 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -163,7 +209,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Menus/Screens/Main Menu Screen/Fade/ColorRect:color")
+tracks/3/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade/ColorRect:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -174,23 +220,37 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Menus/Screens/Main Menu Screen/Fade:rect_position")
+tracks/4/type = "method"
+tracks/4/path = NodePath("@@6115/Menus")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "quit_game"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 720 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=51]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens/Main Menu Screen:visible")
+tracks/0/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -199,10 +259,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menus/Screens/Main Menu Screen/Fade/ColorRect:color")
+tracks/1/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -211,10 +271,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Menus/Screens/Main Menu Screen/Fade:rect_position")
+tracks/2/path = NodePath("@@6115/Menus/Screens/Level Select Screen:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -223,10 +283,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 1280, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Menus/Screens/Main Menu Screen:modulate")
+tracks/3/path = NodePath("@@6115/Menus/Screens/Level Select Screen:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -238,7 +298,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Menus/Screens/Main Menu Screen:rect_position")
+tracks/4/path = NodePath("@@6115/Menus/Screens/Options Screen:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -247,10 +307,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Menus/Screens/Level Select Screen:modulate")
+tracks/5/path = NodePath("@@6115/Menus/Screens/Options Screen:rect_position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -259,10 +319,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( -1280, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Menus/Screens/Level Select Screen:rect_position")
+tracks/6/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade/ColorRect:color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -271,10 +331,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1280, 0 ) ]
+"values": [ Color( 0, 0, 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Menus/Screens/Main Menu Screen/Fade:visible")
+tracks/7/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -282,11 +342,11 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Menus/Screens/Options Screen:rect_position")
+tracks/8/path = NodePath("@@6115/Menus/Screens/Level Select Screen/LevelFade/ColorRect:color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -295,10 +355,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1280, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Menus/Screens/Options Screen:modulate")
+tracks/9/path = NodePath("@@6115/Menus/Screens/Level Select Screen/LevelFade:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -307,42 +367,54 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ false ]
 }
-
-[sub_resource type="Animation" id=34]
-resource_name = "RESET on Level Selection"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens/Main Menu Screen:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1280, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Menus/Screens/Level Select Screen:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
+tracks/10/type = "value"
+tracks/10/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade:rect_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Start to Levels"
+[sub_resource type="Animation" id=52]
+resource_name = "RESET on Level Selection"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("@@6115/Menus/Screens/Level Select Screen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1280, 0 ) ]
+}
+
+[sub_resource type="Animation" id=53]
+resource_name = "Select Level"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens/Main Menu Screen:modulate")
+tracks/0/path = NodePath("@@6115/Menus/Screens/Level Select Screen/LevelFade:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -350,11 +422,11 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menus/Screens/Main Menu Screen:rect_position")
+tracks/1/path = NodePath("@@6115/Menus/Screens/Level Select Screen/LevelFade/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -363,10 +435,52 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("@@6115/Menus")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "select_level"
+} ]
+}
+
+[sub_resource type="Animation" id=54]
+resource_name = "Start to Levels"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -1280, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 tracks/2/type = "value"
-tracks/2/path = NodePath("Menus/Screens/Level Select Screen:rect_position")
+tracks/2/path = NodePath("@@6115/Menus/Screens/Level Select Screen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -375,10 +489,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1280, 0 ), Vector2( 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Menus/Screens/Level Select Screen:modulate")
+tracks/3/path = NodePath("@@6115/Menus/Screens/Level Select Screen:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -387,10 +501,13 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( 1280, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=60]
+resource_name = "Start to Levels2"
+
+[sub_resource type="Animation" id=55]
 resource_name = "Start to Options"
 length = 0.7
 tracks/0/type = "value"
@@ -441,12 +558,60 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1280, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("@@6115/Menus/Screens/Main Menu Screen:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("@@6115/Menus/Screens/Options Screen:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1280, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("@@6115/Menus/Screens/Options Screen:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=56]
 resource_name = "fade in"
 length = 1.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menus/Screens/Main Menu Screen/Fade:visible")
+tracks/0/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -458,7 +623,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menus/Screens/Main Menu Screen/Fade/ColorRect:color")
+tracks/1/path = NodePath("@@6115/Menus/Screens/Main Menu Screen/Fade/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -558,6 +723,26 @@ size = 24
 use_filter = true
 font_data = SubResource( 12 )
 
+[sub_resource type="DynamicFontData" id=57]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=58]
+size = 96
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 1
+font_data = SubResource( 57 )
+
+[sub_resource type="StyleBoxTexture" id=46]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=47]
+size = 512
+font_data = SubResource( 1 )
+
 [sub_resource type="DynamicFontData" id=16]
 font_path = "res://assets/Roboto-Black.ttf"
 
@@ -622,17 +807,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
-autoplay = "RESET"
-"anims/Levels to Start" = SubResource( 15 )
-"anims/Options to Start" = SubResource( 33 )
-"anims/Quit Game" = SubResource( 5 )
-anims/RESET = SubResource( 14 )
-"anims/RESET on Level Selection" = SubResource( 34 )
-"anims/Start to Levels" = SubResource( 2 )
-"anims/Start to Options" = SubResource( 4 )
-"anims/fade in" = SubResource( 3 )
+[node name="Control" parent="." instance=ExtResource( 22 )]
+
+[node name="AnimationPlayer" parent="Control" index="0"]
+autoplay = ""
+"anims/Level Screen Fade In" = SubResource( 61 )
+
+[node name="TransitionAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../../..")
+"anims/Levels to Start" = SubResource( 48 )
+"anims/New Anim" = SubResource( 59 )
+"anims/Options to Start" = SubResource( 49 )
+"anims/Quit Game" = SubResource( 50 )
+anims/RESET = SubResource( 51 )
+"anims/RESET on Level Selection" = SubResource( 52 )
+"anims/Select Level" = SubResource( 53 )
+"anims/Start to Levels" = SubResource( 54 )
+"anims/Start to Levels2" = SubResource( 60 )
+"anims/Start to Options" = SubResource( 55 )
+"anims/fade in" = SubResource( 56 )
 
 [node name="Screens" type="Control" parent="."]
 margin_right = 40.0002
@@ -714,44 +907,9 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Level Select Screen" type="Control" parent="Screens"]
 margin_left = 1280.0
-margin_right = 1320.0
-margin_bottom = 40.0
-
-[node name="Control" type="Control" parent="Screens/Level Select Screen"]
-margin_left = 40.0
-margin_top = 60.0
-margin_right = 1240.0
-margin_bottom = 660.0
-
-[node name="Level Selector1" parent="Screens/Level Select Screen/Control" instance=ExtResource( 1 )]
-position = Vector2( 120, 0 )
-PUZZLE_NAME = "target"
-PUZZLE_NUMBER = 1
-
-[node name="Level Selector2" parent="Screens/Level Select Screen/Control" instance=ExtResource( 1 )]
-position = Vector2( 500, 0 )
-PUZZLE_NAME = "bunny"
-PUZZLE_NUMBER = 2
-
-[node name="Level Selector3" parent="Screens/Level Select Screen/Control" instance=ExtResource( 1 )]
-position = Vector2( 880, 0 )
-PUZZLE_NAME = "github"
-PUZZLE_NUMBER = 3
-
-[node name="Level Selector4" parent="Screens/Level Select Screen/Control" instance=ExtResource( 1 )]
-position = Vector2( 120, 360 )
-PUZZLE_NAME = "apple"
-PUZZLE_NUMBER = 4
-
-[node name="Level Selector5" parent="Screens/Level Select Screen/Control" instance=ExtResource( 1 )]
-position = Vector2( 500, 360 )
-PUZZLE_NAME = "phone"
-PUZZLE_NUMBER = 5
-
-[node name="Level Selector6" parent="Screens/Level Select Screen/Control" instance=ExtResource( 1 )]
-position = Vector2( 880, 360 )
-PUZZLE_NAME = "godot"
-PUZZLE_NUMBER = 6
+margin_right = 2560.0
+margin_bottom = 720.0
+script = ExtResource( 20 )
 
 [node name="LevelsGoBackBtn" type="Button" parent="Screens/Level Select Screen"]
 modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
@@ -763,10 +921,540 @@ custom_fonts/font = SubResource( 13 )
 text = "Go Back"
 flat = true
 
+[node name="LevelsMenu" type="MarginContainer" parent="Screens/Level Select Screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -536.0
+margin_top = -360.0
+margin_right = 536.0
+margin_bottom = 360.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Level Select Screen/LevelsMenu"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1052.0
+margin_bottom = 700.0
+custom_constants/separation = 50
+
+[node name="Title" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer"]
+margin_right = 1032.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 58 )
+text = "Level Select"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer"]
+margin_top = 164.0
+margin_right = 1032.0
+margin_bottom = 680.0
+size_flags_vertical = 3
+
+[node name="LevelsBack" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer"]
+margin_right = 192.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+text = "<"
+flat = true
+expand_icon = true
+
+[node name="Levels" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer"]
+margin_left = 196.0
+margin_right = 836.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 640, 500 )
+rect_clip_content = true
+script = ExtResource( 21 )
+
+[node name="GridBox" type="HBoxContainer" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels"]
+margin_right = 1280.0
+margin_bottom = 500.0
+custom_constants/separation = 0
+
+[node name="LevelsGrid 1" type="GridContainer" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox"]
+margin_right = 640.0
+margin_bottom = 500.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 3
+
+[node name="Level 1" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1"]
+margin_right = 200.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 1"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 1"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 1" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 1"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 2" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1"]
+margin_left = 220.0
+margin_right = 420.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 2"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 2"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 2" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "bunny"
+LEVEL_NUMBER = 2
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 2"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 3" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1"]
+margin_left = 440.0
+margin_right = 640.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 3"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 3"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 3" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "github"
+LEVEL_NUMBER = 3
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 3"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 4" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1"]
+margin_top = 260.0
+margin_right = 200.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 4"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 4"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 4" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "apple"
+LEVEL_NUMBER = 4
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 4"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 5" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1"]
+margin_left = 220.0
+margin_top = 260.0
+margin_right = 420.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 5"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 5"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 5" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "phone"
+LEVEL_NUMBER = 5
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 5"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 6" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1"]
+margin_left = 440.0
+margin_top = 260.0
+margin_right = 640.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 6"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 6"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 6" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "godot"
+LEVEL_NUMBER = 6
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 1/Level 6"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="LevelsGrid 2" type="GridContainer" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox"]
+margin_left = 640.0
+margin_right = 1280.0
+margin_bottom = 500.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 3
+
+[node name="Level 7" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2"]
+margin_right = 200.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 7"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 7"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 7" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 7"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 8" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2"]
+margin_left = 220.0
+margin_right = 420.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 8"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 8"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 8" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 8"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 9" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2"]
+margin_left = 440.0
+margin_right = 640.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 9"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 9"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 9" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 9"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 10" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2"]
+margin_top = 260.0
+margin_right = 200.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 10"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 10"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 10" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 10"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 11" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2"]
+margin_left = 220.0
+margin_top = 260.0
+margin_right = 420.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="Level 12" type="Control" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2"]
+margin_left = 440.0
+margin_top = 260.0
+margin_right = 640.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 12"]
+margin_right = 200.0
+margin_bottom = 240.0
+color = Color( 0.2, 0.219608, 0.278431, 1 )
+
+[node name="sprite" type="Sprite" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 12"]
+position = Vector2( 100, 100 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 12" groups=["Level_Btn"]]
+margin_right = 200.0
+margin_bottom = 240.0
+custom_styles/focus = SubResource( 46 )
+flat = true
+script = ExtResource( 1 )
+PUZZLE_NAME = "target"
+
+[node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 12"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 3220.0
+margin_bottom = 1380.0
+rect_scale = Vector2( 0.05, 0.05 )
+custom_fonts/font = SubResource( 47 )
+text = "Level "
+align = 1
+valign = 1
+
+[node name="LevelsNext" type="Button" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer"]
+margin_left = 840.0
+margin_right = 1032.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+text = ">"
+flat = true
+expand_icon = true
+
+[node name="LevelFade" type="Control" parent="Screens/Level Select Screen"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Screens/Level Select Screen/LevelFade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1240.0
+margin_bottom = 680.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="Options Screen" type="Control" parent="Screens"]
 margin_left = -1280.0
-margin_right = -1240.0
-margin_bottom = 40.0
+margin_bottom = 720.0
 script = ExtResource( 14 )
 
 [node name="Options" type="Control" parent="Screens/Options Screen"]
@@ -846,9 +1534,9 @@ flat = true
 [node name="HowToPlay" type="Control" parent="Screens/Options Screen/Options"]
 
 [node name="HowCheckBox" type="CheckBox" parent="Screens/Options Screen/Options/HowToPlay"]
-margin_left = 460.0
+margin_left = 400.0
 margin_top = 550.0
-margin_right = 4011.0
+margin_right = 4354.0
 margin_bottom = 1758.0
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = SubResource( 26 )
@@ -1003,6 +1691,8 @@ text = "Credit to p0ss and rezoner on opengameart.org for some of the sounds use
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/QuitBtn" to="." method="_on_QuitBtn_pressed"]
 [connection signal="pressed" from="Screens/Level Select Screen/LevelsGoBackBtn" to="." method="_on_LevelsGoBackBtn_pressed"]
+[connection signal="pressed" from="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/LevelsBack" to="Screens/Level Select Screen" method="_on_LevelsBack_pressed"]
+[connection signal="pressed" from="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/LevelsNext" to="Screens/Level Select Screen" method="_on_LevelsNext_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/Options/Delete/DeleteBtn" to="Screens/Options Screen" method="_on_DeleteBtn_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/Options/Delete/AreYouSure/NoBtn" to="Screens/Options Screen" method="_on_NoBtn_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/Options/Delete/AreYouSure/YesBtn" to="Screens/Options Screen" method="_on_YesBtn_pressed"]
@@ -1012,3 +1702,5 @@ text = "Credit to p0ss and rezoner on opengameart.org for some of the sounds use
 [connection signal="mouse_exited" from="Screens/Options Screen/Options/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_mouse_exited"]
 [connection signal="value_changed" from="Screens/Options Screen/Options/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_value_changed"]
 [connection signal="pressed" from="Screens/Options Screen/OptionsGoBackBtn" to="." method="_on_OptionsGoBackBtn_pressed"]
+
+[editable path="Control"]

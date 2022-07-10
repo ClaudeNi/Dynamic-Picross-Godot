@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Level Selector.gd" type="Script" id=1]
 [ext_resource path="res://assets/question.png" type="Texture" id=2]
+[ext_resource path="res://nodes/Anim.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxTexture" id=3]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
-font_data = SubResource( 1 )
+font_data = SubResource( 4 )
 
 [node name="Level Selector" type="Node2D"]
-scale = Vector2( 10, 10 )
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -42,4 +42,8 @@ text = "Level "
 align = 1
 valign = 1
 
+[node name="Control" parent="." instance=ExtResource( 3 )]
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[editable path="Control"]

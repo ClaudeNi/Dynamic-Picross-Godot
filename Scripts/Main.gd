@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var anim = $AnimationPlayer
+
 onready var img = load(Levels.select_puzzle(Game.selected_puzzle)).get_data()
 
 onready var tilemap = $nums/TileMap
@@ -21,7 +23,9 @@ var SCALING = {
 	"15": 0.70
 }
 
+
 func _ready():
+	anim.play("Fade In")
 	img.lock()
 	Game.ready_Game(img, tilemap, nums, label)
 	var vLines = img.get_width() / 5 - 1
@@ -46,6 +50,7 @@ func _ready():
 		hPos += hPos
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
+
 
 func _input(event):
 	if event is InputEventMouseMotion and Game.not_finished:
@@ -77,3 +82,14 @@ func _input(event):
 	if (Input.is_action_just_released("left_click") or Input.is_action_just_released("right_click")):
 		STOPPER = true
 		PREVIOUS_CELL.clear()
+
+
+func exit_level():
+	get_tree().change_scene("res://nodes/Menus.tscn")
+
+
+func _on_Button_pressed():
+	AudioPlayer.play_SE_track(AudioPlayer.menu2)
+	Game.reset_level()
+	Save.coming_back_from_level = true
+	anim.play("Fade Out")

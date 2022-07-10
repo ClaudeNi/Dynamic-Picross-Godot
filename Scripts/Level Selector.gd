@@ -1,22 +1,15 @@
-extends Node2D
+extends Control
 
-export var PUZZLE_NAME = ""
-export var PUZZLE_NUMBER = 0
-
-onready var texture_link = load(Levels.select_puzzle(PUZZLE_NAME))
-
+onready var btn = $Button
 onready var sprite = $sprite
 onready var label = $Label
 
+onready var texture_link = load(Levels.select_puzzle(btn.PUZZLE_NAME))
 
 func _ready():
-	if Save.game_data["beaten_levels"].has(PUZZLE_NAME):
+	if Save.game_data["beaten_levels"].has(btn.PUZZLE_NAME):
 		sprite.texture = texture_link
-		label.text = PUZZLE_NAME.capitalize()
+		label.text = btn.PUZZLE_NAME.capitalize()
 	else:
-		label.text += str(PUZZLE_NUMBER)
+		label.text += str(btn.LEVEL_NUMBER)
 		
-
-func _on_Button_pressed():
-	Game.selected_puzzle = PUZZLE_NAME
-	get_tree().change_scene("res://nodes/Level.tscn")
