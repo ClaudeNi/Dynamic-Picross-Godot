@@ -1,7 +1,11 @@
 extends Node
 
 var selected_puzzle = ""
-var not_finished = true
+var not_finished = false
+var tilemap
+var everything
+var finish
+var answer
 
 var vertical_nums = []
 var horizontal_nums = []
@@ -12,13 +16,13 @@ var selected_cells = []
 var longest_vertical = 0
 var longest_horizontal = 0
 
-func ready_Game(img, tilemap, nums, label):
+func ready_Game(img, nums, label):
 	var WIDTH = img.get_width()
 	var HEIGHT = img.get_height()
 	
 	ready_nums(img, WIDTH, HEIGHT)
-	place_nums(tilemap, nums, label)
-	ready_cells(img, WIDTH, HEIGHT, tilemap)
+	place_nums(nums, label)
+	ready_cells(img, WIDTH, HEIGHT)
 
 func ready_nums(img, WIDTH, HEIGHT):
 	for i in range(WIDTH):
@@ -53,7 +57,7 @@ func ready_nums(img, WIDTH, HEIGHT):
 		horizontal_nums.append(h_nums_line)
 		vertical_nums.append(v_nums_line)
 
-func place_nums(tilemap, nums, label):
+func place_nums(nums, label):
 	for i in vertical_nums:
 		if i.size() > longest_vertical:
 			longest_vertical = i.size()
@@ -80,7 +84,7 @@ func place_nums(tilemap, nums, label):
 			nums.add_child(new_Label)
 	
 
-func ready_cells(img, WIDTH, HEIGHT, tilemap):
+func ready_cells(img, WIDTH, HEIGHT):
 	for i in range(WIDTH):
 		for j in range(HEIGHT):
 			var COLOR = img.get_pixel(i,j)
@@ -92,7 +96,7 @@ func ready_cells(img, WIDTH, HEIGHT, tilemap):
 			if COLOR == Color(0,0,0,1):
 				Game.black_cells.append(str(new_x) + "," + str(new_y))
 
-func decide_Action(x, y, tilemap, level_Finished, answer):
+func decide_Action(x, y):
 	var state = tilemap.get_cell(x,y) # 0 = EMPTY / 1 = FULL / 2 = CROSSED
 	if not state == 0 and not state == -1 and not state == 3:
 		tilemap.set_cell(x,y,0)
@@ -103,17 +107,17 @@ func decide_Action(x, y, tilemap, level_Finished, answer):
 	elif Input.is_action_pressed("right_click") and not state == -1 and not state == 3:
 		tilemap.set_cell(x,y,2)
 		state = 2
-	check_cell(str(x),str(y), state, level_Finished, answer)
+	check_cell(str(x),str(y), state)
 
-func check_cell(x, y, state, level_Finished, answer):
+func check_cell(x, y, state):
 	var ind2 = selected_cells.find(x + "," + y)
 	if not ind2 == -1:
 		selected_cells.pop_at(ind2)
 	elif state == 1:
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
-		answer.text += selected_puzzle.to_upper()
-		level_Finished.visible = true
+		answer.text = "It was " + selected_puzzle.to_upper()
+		finish.visible = true
 		not_finished = false
 		Levels.beaten_levels.append(selected_puzzle)
 		Save.game_data["beaten_levels"] = Levels.beaten_levels
@@ -136,12 +140,17 @@ func reset_level():
 	selected_cells = []
 	longest_vertical = 0
 	longest_horizontal = 0
-	not_finished = true
+	finish.visible = false
+	not_finished = false
+	answer.text = ""
+	tilemap.clear()
+	for child in everything.get_children():
+		child.queue_free()
 
-func hover_nums(x, y, tilemap, previous):
+func hover_nums(x, y, previous):
 	var prev_x = previous.get("x")
 	var prev_y = previous.get("y")
-	clear_hover_nums(prev_x, prev_y, tilemap)
+	clear_hover_nums(prev_x, prev_y)
 	for i in range(longest_vertical):
 		var state = tilemap.get_cell(i,y)
 		if state == 3:
@@ -151,7 +160,7 @@ func hover_nums(x, y, tilemap, previous):
 		if state == 3:
 			tilemap.set_cell(x,j,4)
 
-func clear_hover_nums(x, y, tilemap):
+func clear_hover_nums(x, y):
 	if not y == null:
 		for i in range(longest_vertical):
 			var state = tilemap.get_cell(i,y)
@@ -162,3 +171,6 @@ func clear_hover_nums(x, y, tilemap):
 			var state = tilemap.get_cell(x,j)
 			if state == 4:
 				tilemap.set_cell(x,j,3)
+
+func show_victory():
+	pass

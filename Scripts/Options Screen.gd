@@ -1,7 +1,5 @@
 extends Control
 
-onready var check_box = $Options/CheckBox
-
 onready var bg_slider = $Options/VolumeSliders/BackgroundMusic/BackgroundSlider
 onready var bg_label = $Options/VolumeSliders/BackgroundMusic/BackgroundLabel
 onready var se_slider = $Options/VolumeSliders/SoundEffects/SoundEffectsSlider
@@ -13,8 +11,7 @@ onready var HowTo = $Options/HowToPlay/HowTo
 func _ready():
 	update_BG()
 	update_SE()
-	if not Save.coming_back_from_level:
-		AudioPlayer.play_BG_track(AudioPlayer.puzzle_bg)
+	AudioPlayer.play_BG_track(AudioPlayer.puzzle_bg)
 	
 
 func _on_NoBtn_pressed():

@@ -7,9 +7,17 @@ onready var label = $Label
 onready var texture_link = load(Levels.select_puzzle(btn.PUZZLE_NAME))
 
 func _ready():
+	add_to_group("Level")
 	if Save.game_data["beaten_levels"].has(btn.PUZZLE_NAME):
 		sprite.texture = texture_link
 		label.text = btn.PUZZLE_NAME.capitalize()
 	else:
 		label.text += str(btn.LEVEL_NUMBER)
 		
+func update_image():
+	if Save.game_data["beaten_levels"].has(btn.PUZZLE_NAME):
+		sprite.texture = texture_link
+		label.text = btn.PUZZLE_NAME.capitalize()
+	else:
+		sprite.texture = load("res://assets/question.png")
+		label.text = "Level " + str(btn.LEVEL_NUMBER)

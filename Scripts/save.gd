@@ -9,9 +9,6 @@ const default_data = {
 const SAVE_FILE = "user://save_file.save"
 var game_data = {}
 
-var first_time_loading = true
-var coming_back_from_level = false
-
 func save_data():
 	var file = File.new()
 	file.open(SAVE_FILE, File.WRITE)
@@ -30,6 +27,7 @@ func load_data():
 	check_and_correct_file()
 	
 	Levels.beaten_levels = game_data["beaten_levels"]
+	Levels.update_images()
 
 func delete_data():
 	var dir = Directory.new()
