@@ -18,7 +18,7 @@ var PREVIOUS_HOVER_CELL = {}
 const PIXEL = 16
 var SCALING = {
 	"10": 0.9,
-	"15": 0.70
+	"15": 0.65
 }
 
 
@@ -29,6 +29,7 @@ func load_image():
 func ready_level():
 	img.lock()
 	Game.not_finished = true
+	Game.length = img.get_width()
 	Game.tilemap = tilemap
 	Game.everything = everything
 	Game.finish = level_Finished

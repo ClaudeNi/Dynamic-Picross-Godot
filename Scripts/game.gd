@@ -6,6 +6,7 @@ var tilemap
 var everything
 var finish
 var answer
+var length
 
 var vertical_nums = []
 var horizontal_nums = []
@@ -116,6 +117,7 @@ func check_cell(x, y, state):
 	elif state == 1:
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
+		show_victory()
 		answer.text = "It was " + selected_puzzle.to_upper()
 		finish.visible = true
 		not_finished = false
@@ -173,4 +175,12 @@ func clear_hover_nums(x, y):
 				tilemap.set_cell(x,j,3)
 
 func show_victory():
-	pass
+	for k in range(length * 2):
+		for j in range(k + 1):
+			var i = k - j
+			var x = i + longest_vertical
+			var y = j + longest_horizontal
+			if i < length and j < length:
+				if tilemap.get_cell(x,y) == 2:
+					tilemap.set_cell(x,y,0)
+		yield(get_tree().create_timer(0.3),"timeout")
