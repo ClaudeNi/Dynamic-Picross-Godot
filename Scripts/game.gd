@@ -118,12 +118,6 @@ func check_cell(x, y, state):
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
 		show_victory()
-		answer.text = "It was " + selected_puzzle.to_upper()
-		finish.visible = true
-		not_finished = false
-		Levels.beaten_levels.append(selected_puzzle)
-		Save.game_data["beaten_levels"] = Levels.beaten_levels
-		Save.save_data()
 
 func compare_arrays():
 	for cell in black_cells:
@@ -183,4 +177,15 @@ func show_victory():
 			if i < length and j < length:
 				if tilemap.get_cell(x,y) == 2:
 					tilemap.set_cell(x,y,0)
+				elif tilemap.get_cell(x,y) == 1:
+					tilemap.set_cell(x,y,6)
 		yield(get_tree().create_timer(0.3),"timeout")
+	reveal_answer()
+
+func reveal_answer():
+	answer.text = "It was " + selected_puzzle.to_upper()
+	finish.visible = true
+	not_finished = false
+	Levels.beaten_levels.append(selected_puzzle)
+	Save.game_data["beaten_levels"] = Levels.beaten_levels
+	Save.save_data()
