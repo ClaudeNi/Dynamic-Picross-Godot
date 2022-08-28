@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Scripts/Level Selector Button.gd" type="Script" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://assets/options/volume bg empty.png" type="Texture" id=19]
 [ext_resource path="res://Scripts/Level Selection Screen.gd" type="Script" id=20]
 [ext_resource path="res://Scripts/Levels Grid.gd" type="Script" id=21]
+[ext_resource path="res://assets/cell/filled victory.png" type="Texture" id=22]
+[ext_resource path="res://resources/Cell Fill Texture.tres" type="Texture" id=23]
 
 [sub_resource type="TileSet" id=9]
 0/name = "empty.png 0"
@@ -267,6 +269,34 @@ font_data = SubResource( 2 )
 4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
+5/name = "filled victory.png 5"
+5/texture = ExtResource( 22 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 16, 16 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "Cell Fill Texture.tres 6"
+6/texture = ExtResource( 23 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 16, 16 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
 
 [sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/Roboto-Black.ttf"
@@ -984,7 +1014,7 @@ margin_top = 650.0
 margin_right = 123.0
 margin_bottom = 674.0
 custom_fonts/font = SubResource( 10 )
-text = "Picross v1.3"
+text = "Picross v2.0"
 
 [node name="Level Select Screen" type="Control" parent="Screens"]
 visible = false
@@ -1800,10 +1830,13 @@ margin_bottom = 40.0
 
 [node name="LevelFinished" type="Control" parent="Screens/Level Screen"]
 visible = false
-margin_right = 1280.0
-margin_bottom = 720.0
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -600.0
 
 [node name="ColorRect" type="ColorRect" parent="Screens/Level Screen/LevelFinished"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.784314 )
