@@ -329,7 +329,7 @@ size = 24
 use_filter = true
 font_data = SubResource( 80 )
 
-[sub_resource type="Shader" id=71]
+[sub_resource type="Shader" id=83]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -344,7 +344,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=72]
-shader = SubResource( 71 )
+shader = SubResource( 83 )
 shader_param/circle_size = 0.0
 shader_param/screen_width = 1280.0
 shader_param/screen_height = 720.0
@@ -1348,7 +1348,8 @@ margin_bottom = 240.0
 custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
-PUZZLE_NAME = "target"
+PUZZLE_NAME = "cat"
+LEVEL_NUMBER = 7
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 7"]
 margin_left = 20.0
@@ -1385,6 +1386,7 @@ custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
 PUZZLE_NAME = "target"
+LEVEL_NUMBER = 8
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 8"]
 margin_left = 20.0
@@ -1421,6 +1423,7 @@ custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
 PUZZLE_NAME = "target"
+LEVEL_NUMBER = 9
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 9"]
 margin_left = 20.0
@@ -1457,6 +1460,7 @@ custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
 PUZZLE_NAME = "target"
+LEVEL_NUMBER = 10
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 10"]
 margin_left = 20.0
@@ -1494,6 +1498,7 @@ custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
 PUZZLE_NAME = "target"
+LEVEL_NUMBER = 11
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11"]
 margin_left = 20.0
@@ -1531,6 +1536,7 @@ custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
 PUZZLE_NAME = "target"
+LEVEL_NUMBER = 12
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 12"]
 margin_left = 20.0

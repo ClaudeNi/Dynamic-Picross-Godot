@@ -117,7 +117,8 @@ func check_cell(x, y, state):
 	elif state == 1:
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
-		show_victory()
+		reveal_answer()
+		#show_victory()
 
 func compare_arrays():
 	for cell in black_cells:

@@ -18,7 +18,8 @@ var PREVIOUS_HOVER_CELL = {}
 const PIXEL = 16
 var SCALING = {
 	"10": 0.9,
-	"15": 0.65
+	"15": 0.65,
+	"20": 0.6
 }
 
 
@@ -39,22 +40,24 @@ func ready_level():
 	var hLines = img.get_height() / 5 - 1
 	var vPos = (img.get_width() * 48) / (vLines + 1)
 	var vPos_y = Game.longest_horizontal * 48
+	var vPos_statis = vPos
 	var hPos = (img.get_height() * 48 ) / (hLines + 1)
 	var hPos_x = Game.longest_vertical * 48
+	var hPos_statis = vPos
 	for _i in range(vLines):
 		var new_V_Line = vLine.duplicate()
 		new_V_Line.visible = true
 		new_V_Line.set_size(Vector2(4, img.get_height() * 48))
 		new_V_Line.set_position(Vector2(vPos - 2 + (Game.longest_vertical * 48),vPos_y))
 		everything.add_child(new_V_Line)
-		vPos += vPos
+		vPos += vPos_statis
 	for _i in range(hLines):
 		var new_H_Line = hLine.duplicate()
 		new_H_Line.visible = true
 		new_H_Line.set_size(Vector2(img.get_width() * 48, 4))
 		new_H_Line.set_position(Vector2(hPos_x,hPos + (Game.longest_horizontal * 48) - 2))
 		everything.add_child(new_H_Line)
-		hPos += hPos
+		hPos += hPos_statis
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
 
