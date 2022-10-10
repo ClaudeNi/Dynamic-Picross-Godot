@@ -15,11 +15,8 @@ func _ready():
 	add_to_group("Level")
 	if Save.game_data["beaten_levels"].has(btn.PUZZLE_NAME):
 		sprite.texture = texture_link
-		texture_link.get_data().lock()
-		var WIDTH = str(texture_link.get_width())
-		sprite.scale.x = scales[WIDTH]
-		sprite.scale.y = scales[WIDTH]
 		label.text = btn.PUZZLE_NAME.capitalize()
+		update_scale()
 	else:
 		label.text += str(btn.LEVEL_NUMBER)
 		
@@ -27,6 +24,13 @@ func update_image():
 	if Save.game_data["beaten_levels"].has(btn.PUZZLE_NAME):
 		sprite.texture = texture_link
 		label.text = btn.PUZZLE_NAME.capitalize()
+		update_scale()
 	else:
 		sprite.texture = load("res://assets/question.png")
 		label.text = "Level " + str(btn.LEVEL_NUMBER)
+
+func update_scale():
+	texture_link.get_data().lock()
+	var WIDTH = str(texture_link.get_width())
+	sprite.scale.x = scales[WIDTH]
+	sprite.scale.y = scales[WIDTH]
