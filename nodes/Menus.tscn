@@ -1422,7 +1422,7 @@ margin_bottom = 240.0
 custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
-PUZZLE_NAME = "target"
+PUZZLE_NAME = "jack o lantern"
 LEVEL_NUMBER = 9
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 9"]
