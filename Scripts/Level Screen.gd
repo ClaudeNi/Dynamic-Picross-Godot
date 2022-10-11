@@ -18,8 +18,8 @@ var PREVIOUS_HOVER_CELL = {}
 const PIXEL = 16
 var SCALING = {
 	"10": 0.9,
-	"15": 0.65,
-	"20": 0.6
+	"15": 0.64,
+	"20": 0.48
 }
 
 
