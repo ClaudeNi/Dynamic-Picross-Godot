@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scripts/Level Selector Button.gd" type="Script" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Scripts/Levels Grid.gd" type="Script" id=21]
 [ext_resource path="res://assets/cell/filled victory.png" type="Texture" id=22]
 [ext_resource path="res://resources/Cell Fill Texture.tres" type="Texture" id=23]
+[ext_resource path="res://resources/Move Button.tres" type="Theme" id=24]
 
 [sub_resource type="TileSet" id=9]
 0/name = "empty.png 0"
@@ -1072,6 +1073,7 @@ size_flags_vertical = 3
 margin_right = 192.0
 margin_bottom = 516.0
 size_flags_horizontal = 3
+theme = ExtResource( 24 )
 text = "<"
 flat = true
 expand_icon = true
@@ -1459,7 +1461,7 @@ margin_bottom = 240.0
 custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
-PUZZLE_NAME = "target"
+PUZZLE_NAME = "test"
 LEVEL_NUMBER = 10
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 10"]
@@ -1497,7 +1499,7 @@ margin_bottom = 240.0
 custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
-PUZZLE_NAME = "target"
+PUZZLE_NAME = "test test"
 LEVEL_NUMBER = 11
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11"]
@@ -1554,6 +1556,7 @@ margin_left = 840.0
 margin_right = 1032.0
 margin_bottom = 516.0
 size_flags_horizontal = 3
+theme = ExtResource( 24 )
 text = ">"
 flat = true
 expand_icon = true
