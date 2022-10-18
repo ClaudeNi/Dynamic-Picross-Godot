@@ -1499,7 +1499,7 @@ margin_bottom = 240.0
 custom_styles/focus = SubResource( 46 )
 flat = true
 script = ExtResource( 1 )
-PUZZLE_NAME = "target"
+PUZZLE_NAME = "squid"
 LEVEL_NUMBER = 11
 
 [node name="Label" type="Label" parent="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/Levels/GridBox/LevelsGrid 2/Level 11"]
