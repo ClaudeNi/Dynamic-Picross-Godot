@@ -1923,6 +1923,10 @@ anims/RESET = SubResource( 61 )
 "anims/Start to Options" = SubResource( 66 )
 "anims/fade in" = SubResource( 62 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/StartBtn" to="." method="_on_StartBtn_pressed"]
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
 [connection signal="pressed" from="Screens/Main Menu Screen/Buttons/QuitBtn" to="." method="_on_QuitBtn_pressed"]
