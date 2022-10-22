@@ -8,6 +8,7 @@ onready var level_Finished = $LevelFinished
 onready var answer = $LevelFinished/Answer
 onready var hLine = $nums/hLine
 onready var vLine = $nums/vLine
+onready var back_btn = $LevelBack
 
 var img
 var SCALE
@@ -26,7 +27,6 @@ var SCALING = {
 func load_image():
 	img = load(Levels.select_puzzle(Game.selected_puzzle)).get_data()
 
-
 func ready_level():
 	img.lock()
 	Game.not_finished = true
@@ -35,6 +35,7 @@ func ready_level():
 	Game.everything = everything
 	Game.finish = level_Finished
 	Game.answer = answer
+	Game.back_btn = back_btn
 	Game.ready_Game(img, everything, label)
 	var vLines = img.get_width() / 5 - 1
 	var hLines = img.get_height() / 5 - 1
@@ -60,7 +61,18 @@ func ready_level():
 		hPos += hPos_statis
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
+	align_level()
 
+func align_level():
+	img.lock()
+	SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
+	print(SCALE)
+	var tile_width = img.get_width() * SCALE * PIXEL
+	var width_move = (1280 - tile_width) / 3
+	print(width_move)
+	Game.camera.offset.x = -width_move
+	back_btn.rect_position.x = back_btn.rect_position.x - width_move
+	
 
 func _input(event):
 	if event is InputEventMouseMotion and Game.not_finished:

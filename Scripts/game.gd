@@ -1,5 +1,8 @@
 extends Node
 
+var camera
+var back_btn
+
 var selected_puzzle = ""
 var not_finished = false
 var tilemap
@@ -18,6 +21,7 @@ var longest_vertical = 0
 var longest_horizontal = 0
 
 func ready_Game(img, nums, label):
+	
 	var WIDTH = img.get_width()
 	var HEIGHT = img.get_height()
 	
@@ -140,6 +144,8 @@ func reset_level():
 	finish.visible = false
 	not_finished = false
 	answer.text = ""
+	camera.offset.x = 0
+	back_btn.rect_position.x = 1178
 	tilemap.clear()
 	for child in everything.get_children():
 		child.queue_free()
