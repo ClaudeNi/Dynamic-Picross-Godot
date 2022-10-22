@@ -22,6 +22,7 @@ var SCALING = {
 	"15": 0.64,
 	"20": 0.48
 }
+var width_move
 
 
 func load_image():
@@ -61,15 +62,13 @@ func ready_level():
 		hPos += hPos_statis
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
-	align_level()
+	#align_level()
 
 func align_level():
 	img.lock()
 	SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
-	print(SCALE)
 	var tile_width = img.get_width() * SCALE * PIXEL
-	var width_move = (1280 - tile_width) / 3
-	print(width_move)
+	width_move = (1280 - tile_width) / 3
 	Game.camera.offset.x = -width_move
 	back_btn.rect_position.x = back_btn.rect_position.x - width_move
 	
