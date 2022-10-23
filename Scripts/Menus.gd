@@ -1,9 +1,13 @@
 extends Control
 
 onready var anim = $AnimationPlayer
+onready var camera = $Camera2D
+onready var circle = $Circle
 
 func _ready():
 	anim.play("fade in")
+	Game.camera = camera
+	Game.circle = circle
 	for btn in get_tree().get_nodes_in_group("Level_Btn"):
 		btn.connect("pressed", self, "select_level", [btn])
 

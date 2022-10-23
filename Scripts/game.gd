@@ -2,6 +2,7 @@ extends Node
 
 var camera
 var back_btn
+var circle
 
 var selected_puzzle = ""
 var not_finished = false

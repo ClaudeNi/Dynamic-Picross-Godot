@@ -28,9 +28,11 @@ var width_move
 func load_image():
 	img = load(Levels.select_puzzle(Game.selected_puzzle)).get_data()
 
+func start_game():
+	Game.not_finished = true
+
 func ready_level():
 	img.lock()
-	Game.not_finished = true
 	Game.length = img.get_width()
 	Game.tilemap = tilemap
 	Game.everything = everything
@@ -62,7 +64,6 @@ func ready_level():
 		hPos += hPos_statis
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
-	align_level()
 
 func align_level():
 	img.lock()
@@ -71,6 +72,7 @@ func align_level():
 	width_move = (1280 - tile_width) / 3
 	Game.camera.offset.x = -width_move
 	back_btn.rect_position.x = back_btn.rect_position.x - width_move
+	
 	
 
 func _input(event):
