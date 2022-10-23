@@ -62,7 +62,7 @@ func ready_level():
 		hPos += hPos_statis
 	nums.rect_scale.x = SCALING[str(img.get_width())]
 	nums.rect_scale.y = SCALING[str(img.get_width())]
-	#align_level()
+	align_level()
 
 func align_level():
 	img.lock()
@@ -77,7 +77,7 @@ func _input(event):
 	if event is InputEventMouseMotion and Game.not_finished:
 		img.lock()
 		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
-		var x = floor(event.position[0] / (PIXEL * SCALE))
+		var x = floor((event.position[0] - width_move) / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))
 		var state = tilemap.get_cell(x,y)
 		if (not PREVIOUS_HOVER_CELL.get("x") == x or not PREVIOUS_HOVER_CELL.get("y") == y) and (state == 0 or state == 1 or state == 2):
@@ -90,7 +90,7 @@ func _input(event):
 	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")) and Game.not_finished:
 		img.lock()
 		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
-		var x = floor(event.position[0] / (PIXEL * SCALE))
+		var x = floor((event.position[0] - width_move) / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))
 		var state = tilemap.get_cell(x,y)
 		if STOPPER:
