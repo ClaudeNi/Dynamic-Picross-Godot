@@ -193,6 +193,7 @@ func show_victory():
 	reveal_answer()
 
 func reveal_answer():
+	realign_level()
 	answer.text = "It was " + selected_puzzle.to_upper()
 	finish.visible = true
 	not_finished = false
