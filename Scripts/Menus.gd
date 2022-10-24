@@ -11,19 +11,18 @@ func _ready():
 	for btn in get_tree().get_nodes_in_group("Level_Btn"):
 		btn.connect("pressed", self, "select_level", [btn])
 
-
 func quit_game():
 	get_tree().quit()	
-
 
 func select_level(btn):
 	Game.selected_puzzle = btn.PUZZLE_NAME
 	anim.play("Select Level")
 
-
 func reset_level():
 	Game.reset_level()
 
+func realign_level():
+	Game.realign_level()
 
 func _on_StartBtn_pressed():
 	AudioPlayer.play_SE_track(AudioPlayer.menu1)

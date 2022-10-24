@@ -145,11 +145,13 @@ func reset_level():
 	finish.visible = false
 	not_finished = false
 	answer.text = ""
-	camera.offset.x = 0
-	back_btn.rect_position.x = 1178
 	tilemap.clear()
 	for child in everything.get_children():
 		child.queue_free()
+
+func realign_level():
+	camera.offset.x = 0
+	back_btn.rect_position.x = 1178
 
 func hover_nums(x, y, previous):
 	var prev_x = previous.get("x")
