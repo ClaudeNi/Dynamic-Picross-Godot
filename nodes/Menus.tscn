@@ -727,7 +727,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0.81, 0.82 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -741,7 +741,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=70]
 resource_name = "Select Level"
 length = 1.65
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Circle:visible")
 tracks/0/interp = 1
@@ -797,7 +797,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.79, 0.81, 1.6, 1.65 ),
+"times": PoolRealArray( 0.75, 0.8, 0.81, 1.65 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
