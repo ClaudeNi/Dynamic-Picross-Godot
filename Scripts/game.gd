@@ -152,6 +152,7 @@ func reset_level():
 func realign_level():
 	camera.offset.x = 0
 	back_btn.rect_position.x = 1178
+	circle.rect_position.x = 0
 
 func hover_nums(x, y, previous):
 	var prev_x = previous.get("x")

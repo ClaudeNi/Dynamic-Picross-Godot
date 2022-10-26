@@ -71,8 +71,8 @@ func align_level():
 	var tile_width = img.get_width() * SCALE * PIXEL
 	width_move = (1280 - tile_width) / 3
 	Game.camera.offset.x = -width_move
+	Game.circle.rect_position.x = Game.circle.rect_position.x - width_move
 	back_btn.rect_position.x = back_btn.rect_position.x - width_move
-	
 	
 
 func _input(event):
