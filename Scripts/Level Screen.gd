@@ -38,7 +38,7 @@ func ready_level():
 	Game.everything = everything
 	Game.finish = level_Finished
 	Game.answer = answer
-	Game.back_btn = back_btn
+	Globals.back_btn = back_btn
 	Game.ready_Game(img, everything, label)
 	var vLines = img.get_width() / 5 - 1
 	var hLines = img.get_height() / 5 - 1
@@ -70,8 +70,8 @@ func align_level():
 	SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
 	var tile_width = img.get_width() * SCALE * PIXEL
 	width_move = (1280 - tile_width) / 3
-	Game.camera.offset.x = -width_move
-	Game.circle.rect_position.x = Game.circle.rect_position.x - width_move
+	Globals.camera.offset.x = -width_move
+	Globals.circle.rect_position.x = Globals.circle.rect_position.x - width_move
 	back_btn.rect_position.x = back_btn.rect_position.x - width_move
 	
 

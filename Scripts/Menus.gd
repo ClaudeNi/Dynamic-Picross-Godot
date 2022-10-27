@@ -6,8 +6,8 @@ onready var circle = $Circle
 
 func _ready():
 	anim.play("fade in")
-	Game.camera = camera
-	Game.circle = circle
+	Globals.camera = camera
+	Globals.circle = circle
 	for btn in get_tree().get_nodes_in_group("Level_Btn"):
 		btn.connect("pressed", self, "select_level", [btn])
 

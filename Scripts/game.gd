@@ -1,9 +1,5 @@
 extends Node
 
-var camera
-var back_btn
-var circle
-
 var selected_puzzle = ""
 var not_finished = false
 var tilemap
@@ -150,9 +146,9 @@ func reset_level():
 		child.queue_free()
 
 func realign_level():
-	camera.offset.x = 0
-	back_btn.rect_position.x = 1178
-	circle.rect_position.x = 0
+	Globals.camera.offset.x = 0
+	Globals.back_btn.rect_position.x = 1178
+	Globals.circle.rect_position.x = 0
 
 func hover_nums(x, y, previous):
 	var prev_x = previous.get("x")
