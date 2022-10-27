@@ -54,8 +54,7 @@ UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 Save="*res://Scripts/save.gd"
 AudioPlayer="*res://nodes/Audio Player.tscn"
-Anim2="*res://nodes/Anim2.tscn"
-Anim="*res://nodes/Anim.tscn"
+Globals="*res://Scripts/globals.gd"
 
 [display]
 
