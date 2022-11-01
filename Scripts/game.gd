@@ -7,6 +7,8 @@ var everything
 var finish
 var answer
 var length
+var last_x
+var last_y
 
 var vertical_nums = []
 var horizontal_nums = []
@@ -118,6 +120,7 @@ func check_cell(x, y, state):
 	elif state == 1:
 		selected_cells.append(x + "," + y)
 	if compare_arrays():
+		clear_hover_nums(last_x, last_y)
 		reveal_answer()
 		#show_victory()
 
@@ -197,3 +200,16 @@ func reveal_answer():
 	Levels.beaten_levels.append(selected_puzzle)
 	Save.game_data["beaten_levels"] = Levels.beaten_levels
 	Save.save_data()
+
+#func zoom_in():
+	#Globals.zoom_X -= Globals.zoom
+	#Globals.zoom_Y -= Globals.zoom
+	#Globals.camera.zoom = Vector2(Globals.zoom_X, Globals.zoom_Y)
+	#Globals.camera.offset.x = Globals.camera.offset.x - (Globals.camera.offset.x * Globals.zoom)
+	
+	
+#func zoom_out():
+	#if Globals.zoom_X < 1:
+		#Globals.zoom_X += Globals.zoom
+		#Globals.zoom_Y += Globals.zoom
+		#Globals.camera.zoom = Vector2(Globals.zoom_X, Globals.zoom_Y)

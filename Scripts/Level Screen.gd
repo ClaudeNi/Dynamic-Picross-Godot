@@ -73,26 +73,29 @@ func align_level():
 	Globals.camera.offset.x = -width_move
 	Globals.circle.rect_position.x = Globals.circle.rect_position.x - width_move
 	back_btn.rect_position.x = back_btn.rect_position.x - width_move
+	Globals.camera_offset = width_move
 	
 
 func _input(event):
 	if event is InputEventMouseMotion and Game.not_finished:
 		img.lock()
 		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
-		var x = floor((event.position[0] - width_move) / (PIXEL * SCALE))
+		var x = floor((event.position[0] - Globals.camera_offset) / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))
 		var state = tilemap.get_cell(x,y)
 		if (not PREVIOUS_HOVER_CELL.get("x") == x or not PREVIOUS_HOVER_CELL.get("y") == y) and (state == 0 or state == 1 or state == 2):
 			Game.hover_nums(x, y, PREVIOUS_HOVER_CELL)
 			PREVIOUS_HOVER_CELL["x"] = x
 			PREVIOUS_HOVER_CELL["y"] = y
+			Game.last_x = PREVIOUS_HOVER_CELL.get("x")
+			Game.last_y = PREVIOUS_HOVER_CELL.get("y")
 		elif not state == 0 and not state == 1 and not state == 2:
 			Game.clear_hover_nums(PREVIOUS_HOVER_CELL.get("x"), PREVIOUS_HOVER_CELL.get("y"))
 			PREVIOUS_HOVER_CELL.clear()
 	if (Input.is_action_pressed("left_click") or Input.is_action_pressed("right_click")) and Game.not_finished:
 		img.lock()
 		SCALE = tilemap.scale.x * SCALING[str(img.get_width())]
-		var x = floor((event.position[0] - width_move) / (PIXEL * SCALE))
+		var x = floor((event.position[0] - Globals.camera_offset) / (PIXEL * SCALE))
 		var y = floor(event.position[1] / (PIXEL * SCALE))
 		var state = tilemap.get_cell(x,y)
 		if STOPPER:
@@ -105,4 +108,7 @@ func _input(event):
 	if (Input.is_action_just_released("left_click") or Input.is_action_just_released("right_click")):
 		STOPPER = true
 		PREVIOUS_CELL.clear()
-
+	if (Input.is_action_just_pressed("zoom_in")) and Game.not_finished:
+		Game.zoom_in()
+	if (Input.is_action_just_pressed("zoom_out")) and Game.not_finished:
+		Game.zoom_out()
