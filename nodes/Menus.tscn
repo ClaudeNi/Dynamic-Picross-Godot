@@ -135,6 +135,31 @@ font_path = "res://assets/Roboto-Black.ttf"
 size = 512
 font_data = SubResource( 1 )
 
+[sub_resource type="DynamicFontData" id=22]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=26]
+size = 380
+outline_size = 15
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 22 )
+
+[sub_resource type="DynamicFontData" id=18]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=24]
+size = 32
+use_filter = true
+font_data = SubResource( 18 )
+
+[sub_resource type="DynamicFontData" id=29]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=30]
+size = 24
+use_filter = true
+font_data = SubResource( 29 )
+
 [sub_resource type="DynamicFontData" id=16]
 font_path = "res://assets/Roboto-Black.ttf"
 
@@ -145,29 +170,12 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = SubResource( 16 )
 
-[sub_resource type="DynamicFontData" id=18]
-font_path = "res://assets/Roboto-Black.ttf"
-
-[sub_resource type="DynamicFont" id=24]
-size = 32
-use_filter = true
-font_data = SubResource( 18 )
-
 [sub_resource type="DynamicFontData" id=20]
 font_path = "res://assets/Roboto-Black.ttf"
 
 [sub_resource type="DynamicFont" id=25]
 size = 48
 font_data = SubResource( 20 )
-
-[sub_resource type="DynamicFontData" id=22]
-font_path = "res://assets/Roboto-Black.ttf"
-
-[sub_resource type="DynamicFont" id=26]
-size = 380
-outline_size = 15
-outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 22 )
 
 [sub_resource type="StyleBoxFlat" id=44]
 bg_color = Color( 0.207843, 0.360784, 0.490196, 1 )
@@ -185,14 +193,6 @@ HSlider/icons/grabber_highlight = ExtResource( 16 )
 HSlider/styles/grabber_area = SubResource( 44 )
 HSlider/styles/grabber_area_highlight = SubResource( 45 )
 HSlider/styles/slider = SubResource( 43 )
-
-[sub_resource type="DynamicFontData" id=29]
-font_path = "res://assets/Roboto-Black.ttf"
-
-[sub_resource type="DynamicFont" id=30]
-size = 24
-use_filter = true
-font_data = SubResource( 29 )
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/Roboto-Black.ttf"
@@ -1582,77 +1582,6 @@ script = ExtResource( 14 )
 margin_right = 1280.0
 margin_bottom = 720.0
 
-[node name="Delete" type="Control" parent="Screens/Options Screen/Options"]
-visible = false
-margin_right = 1280.0
-margin_bottom = 720.0
-
-[node name="DeleteBtn" type="Button" parent="Screens/Options Screen/Options/Delete"]
-margin_right = 1907.0
-margin_bottom = 726.0
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 23 )
-text = "Delete Save"
-icon = ExtResource( 3 )
-flat = true
-
-[node name="AreYouSure" type="Control" parent="Screens/Options Screen/Options/Delete"]
-visible = false
-margin_right = 1280.0
-margin_bottom = 720.0
-
-[node name="ColorRect" type="ColorRect" parent="Screens/Options Screen/Options/Delete/AreYouSure"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -150.0
-margin_right = 250.0
-margin_bottom = 150.0
-color = Color( 0.207843, 0.360784, 0.490196, 0.705882 )
-
-[node name="Label" type="Label" parent="Screens/Options Screen/Options/Delete/AreYouSure"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -110.0
-margin_right = 150.0
-margin_bottom = -53.0
-custom_fonts/font = SubResource( 24 )
-text = "Are you sure?"
-align = 1
-
-[node name="NoBtn" type="Button" parent="Screens/Options Screen/Options/Delete/AreYouSure"]
-modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 60.0
-margin_top = 40.0
-margin_right = 133.0
-margin_bottom = 103.0
-custom_fonts/font = SubResource( 25 )
-text = "No"
-flat = true
-
-[node name="YesBtn" type="Button" parent="Screens/Options Screen/Options/Delete/AreYouSure"]
-modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = 40.0
-margin_right = -47.0
-margin_bottom = 103.0
-custom_fonts/font = SubResource( 25 )
-text = "Yes"
-flat = true
-
 [node name="HowToPlay" type="Control" parent="Screens/Options Screen/Options"]
 visible = false
 
@@ -1696,96 +1625,6 @@ text = "Left click with the mouse to fill the cell.
 Right click with the mouse to mark the cell with an X.
 Left or Right click with a mouse on a filled tile or an X marked tile to clear it."
 
-[node name="VolumeSliders" type="Control" parent="Screens/Options Screen/Options"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="BackgroundMusic" type="Control" parent="Screens/Options Screen/Options/VolumeSliders"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="BackgroundBackground" type="TextureRect" parent="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic"]
-margin_left = 958.0
-margin_top = 28.0
-margin_right = 1231.0
-margin_bottom = 62.0
-texture = ExtResource( 15 )
-stretch_mode = 1
-
-[node name="BackgroundSlider" type="HSlider" parent="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic"]
-margin_left = 960.0
-margin_top = 30.0
-margin_right = 1231.0
-margin_bottom = 60.0
-theme = SubResource( 37 )
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="BackgroundLabel" type="Label" parent="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic"]
-margin_left = 1232.0
-margin_top = 25.0
-margin_right = 1275.0
-margin_bottom = 63.0
-theme = ExtResource( 17 )
-text = "10"
-align = 1
-valign = 1
-
-[node name="Music" type="Label" parent="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic"]
-margin_left = 853.0
-margin_top = 24.0
-margin_right = 956.0
-margin_bottom = 62.0
-theme = ExtResource( 17 )
-text = "Music:"
-align = 1
-valign = 1
-
-[node name="SoundEffects" type="Control" parent="Screens/Options Screen/Options/VolumeSliders"]
-margin_top = 51.0
-margin_right = 40.0
-margin_bottom = 91.0
-
-[node name="SoundEffectsBackground" type="TextureRect" parent="Screens/Options Screen/Options/VolumeSliders/SoundEffects"]
-margin_left = 958.0
-margin_top = 28.0
-margin_right = 1231.0
-margin_bottom = 62.0
-texture = ExtResource( 15 )
-stretch_mode = 1
-
-[node name="SoundEffectsSlider" type="HSlider" parent="Screens/Options Screen/Options/VolumeSliders/SoundEffects"]
-margin_left = 960.0
-margin_top = 30.0
-margin_right = 1231.0
-margin_bottom = 60.0
-theme = SubResource( 37 )
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="SoundEffectsLabel" type="Label" parent="Screens/Options Screen/Options/VolumeSliders/SoundEffects"]
-margin_left = 1232.0
-margin_top = 25.0
-margin_right = 1275.0
-margin_bottom = 63.0
-theme = ExtResource( 17 )
-text = "10"
-align = 1
-valign = 1
-
-[node name="SoundEffects" type="Label" parent="Screens/Options Screen/Options/VolumeSliders/SoundEffects"]
-margin_left = 730.0
-margin_top = 24.0
-margin_right = 956.0
-margin_bottom = 62.0
-theme = ExtResource( 17 )
-text = "Sound Effects:"
-align = 1
-valign = 1
-
 [node name="OptionsGoBackBtn" type="Button" parent="Screens/Options Screen"]
 modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
 margin_left = 1178.0
@@ -1821,7 +1660,6 @@ margin_bottom = -40.0
 theme = ExtResource( 26 )
 
 [node name="General" type="Tabs" parent="Screens/Options Screen/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 39.0
@@ -1838,6 +1676,7 @@ columns = 2
 
 [node name="Delete" type="Control" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer"]
 margin_right = 630.0
+margin_bottom = 167.0
 rect_min_size = Vector2( 630, 167 )
 
 [node name="DeleteBtn" type="Button" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/Delete"]
@@ -1900,6 +1739,7 @@ anchor_bottom = 1.0
 margin_top = 39.0
 
 [node name="Audio" type="Tabs" parent="Screens/Options Screen/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 39.0
@@ -2243,14 +2083,7 @@ current = true
 [connection signal="pressed" from="Screens/Level Select Screen/LevelsGoBackBtn" to="." method="_on_LevelsGoBackBtn_pressed"]
 [connection signal="pressed" from="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/LevelsBack" to="Screens/Level Select Screen" method="_on_LevelsBack_pressed"]
 [connection signal="pressed" from="Screens/Level Select Screen/LevelsMenu/VBoxContainer/HBoxContainer/LevelsNext" to="Screens/Level Select Screen" method="_on_LevelsNext_pressed"]
-[connection signal="pressed" from="Screens/Options Screen/Options/Delete/DeleteBtn" to="Screens/Options Screen" method="_on_DeleteBtn_pressed"]
-[connection signal="pressed" from="Screens/Options Screen/Options/Delete/AreYouSure/NoBtn" to="Screens/Options Screen" method="_on_NoBtn_pressed"]
-[connection signal="pressed" from="Screens/Options Screen/Options/Delete/AreYouSure/YesBtn" to="Screens/Options Screen" method="_on_YesBtn_pressed"]
 [connection signal="toggled" from="Screens/Options Screen/Options/HowToPlay/HowCheckBox" to="Screens/Options Screen" method="_on_HowCheckBox_toggled"]
-[connection signal="mouse_exited" from="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_mouse_exited"]
-[connection signal="value_changed" from="Screens/Options Screen/Options/VolumeSliders/BackgroundMusic/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_value_changed"]
-[connection signal="mouse_exited" from="Screens/Options Screen/Options/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_mouse_exited"]
-[connection signal="value_changed" from="Screens/Options Screen/Options/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_value_changed"]
 [connection signal="pressed" from="Screens/Options Screen/OptionsGoBackBtn" to="." method="_on_OptionsGoBackBtn_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/Delete/DeleteBtn" to="Screens/Options Screen" method="_on_DeleteBtn_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure/NoBtn" to="Screens/Options Screen" method="_on_NoBtn_pressed"]
