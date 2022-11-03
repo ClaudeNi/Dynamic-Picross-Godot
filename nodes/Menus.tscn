@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Scripts/Level Selector Button.gd" type="Script" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://resources/Cell Fill Texture.tres" type="Texture" id=23]
 [ext_resource path="res://resources/Move Button.tres" type="Theme" id=24]
 [ext_resource path="res://nodes/CellAnimated.tscn" type="PackedScene" id=25]
+[ext_resource path="res://resources/Options Tab Container.tres" type="Theme" id=26]
 
 [sub_resource type="TileSet" id=9]
 0/name = "empty.png 0"
@@ -1582,6 +1583,7 @@ margin_right = 1280.0
 margin_bottom = 720.0
 
 [node name="Delete" type="Control" parent="Screens/Options Screen/Options"]
+visible = false
 margin_right = 1280.0
 margin_bottom = 720.0
 
@@ -1652,6 +1654,7 @@ text = "Yes"
 flat = true
 
 [node name="HowToPlay" type="Control" parent="Screens/Options Screen/Options"]
+visible = false
 
 [node name="HowCheckBox" type="CheckBox" parent="Screens/Options Screen/Options/HowToPlay"]
 margin_left = 400.0
@@ -1694,6 +1697,7 @@ Right click with the mouse to mark the cell with an X.
 Left or Right click with a mouse on a filled tile or an X marked tile to clear it."
 
 [node name="VolumeSliders" type="Control" parent="Screens/Options Screen/Options"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -1806,6 +1810,299 @@ margin_bottom = -2.0
 rect_scale = Vector2( 0.9, 0.9 )
 theme = ExtResource( 17 )
 text = "Credit to p0ss and rezoner on opengameart.org for some of the sounds used."
+
+[node name="TabContainer" type="TabContainer" parent="Screens/Options Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -40.0
+theme = ExtResource( 26 )
+
+[node name="General" type="Tabs" parent="Screens/Options Screen/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 39.0
+tab_align = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Screens/Options Screen/TabContainer/General"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="Screens/Options Screen/TabContainer/General/MarginContainer"]
+margin_right = 1260.0
+margin_bottom = 631.0
+columns = 2
+
+[node name="Delete" type="Control" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer"]
+margin_right = 630.0
+rect_min_size = Vector2( 630, 167 )
+
+[node name="DeleteBtn" type="Button" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/Delete"]
+margin_right = 1907.0
+margin_bottom = 726.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 23 )
+text = "Delete Save"
+icon = ExtResource( 3 )
+flat = true
+
+[node name="AreYouSure" type="HBoxContainer" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer"]
+visible = false
+margin_left = 634.0
+margin_right = 1264.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 630, 167 )
+alignment = 1
+
+[node name="Label" type="Label" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure"]
+margin_left = 86.0
+margin_top = 64.0
+margin_right = 336.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 250, 0 )
+custom_fonts/font = SubResource( 24 )
+text = "Are you sure?"
+align = 1
+
+[node name="NoBtn" type="Button" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure"]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
+margin_left = 340.0
+margin_right = 440.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 25 )
+text = "No"
+flat = true
+
+[node name="YesBtn" type="Button" parent="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure"]
+modulate = Color( 0.972549, 0.694118, 0.584314, 1 )
+margin_left = 444.0
+margin_right = 544.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 25 )
+text = "Yes"
+flat = true
+
+[node name="Graphics" type="Tabs" parent="Screens/Options Screen/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 39.0
+
+[node name="Controls" type="Tabs" parent="Screens/Options Screen/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 39.0
+
+[node name="Audio" type="Tabs" parent="Screens/Options Screen/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 39.0
+
+[node name="VolumeSliders" type="Control" parent="Screens/Options Screen/TabContainer/Audio"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BackgroundMusic" type="Control" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BackgroundBackground" type="TextureRect" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic"]
+margin_left = 958.0
+margin_top = 28.0
+margin_right = 1231.0
+margin_bottom = 62.0
+texture = ExtResource( 15 )
+stretch_mode = 1
+
+[node name="BackgroundSlider" type="HSlider" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic"]
+margin_left = 960.0
+margin_top = 30.0
+margin_right = 1231.0
+margin_bottom = 60.0
+theme = SubResource( 37 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="BackgroundLabel" type="Label" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic"]
+margin_left = 1232.0
+margin_top = 25.0
+margin_right = 1275.0
+margin_bottom = 63.0
+theme = ExtResource( 17 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Music" type="Label" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic"]
+margin_left = 853.0
+margin_top = 24.0
+margin_right = 956.0
+margin_bottom = 62.0
+theme = ExtResource( 17 )
+text = "Music:"
+align = 1
+valign = 1
+
+[node name="SoundEffects" type="Control" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders"]
+margin_top = 51.0
+margin_right = 40.0
+margin_bottom = 91.0
+
+[node name="SoundEffectsBackground" type="TextureRect" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects"]
+margin_left = 958.0
+margin_top = 28.0
+margin_right = 1231.0
+margin_bottom = 62.0
+texture = ExtResource( 15 )
+stretch_mode = 1
+
+[node name="SoundEffectsSlider" type="HSlider" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects"]
+margin_left = 960.0
+margin_top = 30.0
+margin_right = 1231.0
+margin_bottom = 60.0
+theme = SubResource( 37 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="SoundEffectsLabel" type="Label" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects"]
+margin_left = 1232.0
+margin_top = 25.0
+margin_right = 1275.0
+margin_bottom = 63.0
+theme = ExtResource( 17 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="SoundEffects" type="Label" parent="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects"]
+margin_left = 730.0
+margin_top = 24.0
+margin_right = 956.0
+margin_bottom = 62.0
+theme = ExtResource( 17 )
+text = "Sound Effects:"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Screens/Options Screen/TabContainer/Audio"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer"]
+margin_right = 1264.0
+margin_bottom = 631.0
+columns = 2
+
+[node name="Music" type="Label" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer"]
+margin_right = 630.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 630, 50 )
+theme = ExtResource( 17 )
+text = "Music:"
+align = 1
+valign = 1
+
+[node name="BackgroundMusicHBox" type="HBoxContainer" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer"]
+margin_left = 634.0
+margin_right = 1264.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 630, 50 )
+alignment = 1
+
+[node name="Background" type="Control" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox"]
+margin_left = 157.0
+margin_right = 430.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 273, 50 )
+
+[node name="BackgroundBackground" type="TextureRect" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox/Background"]
+margin_top = 8.0
+margin_right = 273.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 273, 0 )
+texture = ExtResource( 15 )
+stretch_mode = 1
+
+[node name="BackgroundSlider" type="HSlider" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox/Background"]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 273.0
+margin_bottom = 40.0
+theme = SubResource( 37 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="BackgroundLabel" type="Label" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox"]
+margin_left = 434.0
+margin_right = 473.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 39, 50 )
+theme = ExtResource( 17 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="SoundEffects" type="Label" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer"]
+margin_top = 54.0
+margin_right = 630.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 630, 50 )
+theme = ExtResource( 17 )
+text = "Sound Effects:"
+align = 1
+valign = 1
+
+[node name="SoundEffectsHBox" type="HBoxContainer" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer"]
+margin_left = 634.0
+margin_top = 54.0
+margin_right = 1264.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 630, 50 )
+alignment = 1
+
+[node name="SoundEffects" type="Control" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox"]
+margin_left = 157.0
+margin_right = 430.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 273, 50 )
+
+[node name="SoundEffectsBackground" type="TextureRect" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox/SoundEffects"]
+margin_top = 8.0
+margin_right = 273.0
+margin_bottom = 42.0
+texture = ExtResource( 15 )
+stretch_mode = 1
+
+[node name="SoundEffectsSlider" type="HSlider" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox/SoundEffects"]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 273.0
+margin_bottom = 40.0
+theme = SubResource( 37 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="SoundEffectsLabel" type="Label" parent="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox"]
+margin_left = 434.0
+margin_right = 473.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 39, 50 )
+theme = ExtResource( 17 )
+text = "10"
+align = 1
+valign = 1
 
 [node name="Level Screen" type="Control" parent="Screens"]
 visible = false
@@ -1955,5 +2252,16 @@ current = true
 [connection signal="mouse_exited" from="Screens/Options Screen/Options/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_mouse_exited"]
 [connection signal="value_changed" from="Screens/Options Screen/Options/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_value_changed"]
 [connection signal="pressed" from="Screens/Options Screen/OptionsGoBackBtn" to="." method="_on_OptionsGoBackBtn_pressed"]
+[connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/Delete/DeleteBtn" to="Screens/Options Screen" method="_on_DeleteBtn_pressed"]
+[connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure/NoBtn" to="Screens/Options Screen" method="_on_NoBtn_pressed"]
+[connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure/YesBtn" to="Screens/Options Screen" method="_on_YesBtn_pressed"]
+[connection signal="mouse_exited" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_mouse_exited"]
+[connection signal="value_changed" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_value_changed"]
+[connection signal="mouse_exited" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_mouse_exited"]
+[connection signal="value_changed" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_value_changed"]
+[connection signal="mouse_exited" from="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox/Background/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_mouse_exited"]
+[connection signal="value_changed" from="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox/Background/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_value_changed"]
+[connection signal="mouse_exited" from="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_mouse_exited"]
+[connection signal="value_changed" from="Screens/Options Screen/TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_value_changed"]
 [connection signal="pressed" from="Screens/Level Screen/LevelFinished/LevelBack" to="." method="_on_LevelBack_pressed"]
 [connection signal="pressed" from="Screens/Level Screen/LevelBack" to="." method="_on_LevelBack_pressed"]
