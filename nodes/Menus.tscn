@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Scripts/Level Selector Button.gd" type="Script" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://resources/Move Button.tres" type="Theme" id=24]
 [ext_resource path="res://nodes/CellAnimated.tscn" type="PackedScene" id=25]
 [ext_resource path="res://resources/Options Tab Container.tres" type="Theme" id=26]
+[ext_resource path="res://assets/options/fill 3x.png" type="Texture" id=27]
+[ext_resource path="res://assets/options/crossed 3x.png" type="Texture" id=28]
+[ext_resource path="res://assets/options/number 3x.png" type="Texture" id=29]
 
 [sub_resource type="TileSet" id=9]
 0/name = "empty.png 0"
@@ -179,6 +182,30 @@ font_data = SubResource( 20 )
 
 [sub_resource type="Theme" id=84]
 
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.207843, 0.360784, 0.490196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.14902, 0.258824, 0.34902, 1 )
+
+[sub_resource type="StyleBoxTexture" id=43]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 120, 30 )
+
+[sub_resource type="Theme" id=37]
+HSlider/icons/grabber = ExtResource( 16 )
+HSlider/icons/grabber_highlight = ExtResource( 16 )
+HSlider/styles/grabber_area = SubResource( 44 )
+HSlider/styles/grabber_area_highlight = SubResource( 45 )
+HSlider/styles/slider = SubResource( 43 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=74]
+size = 32
+font_data = SubResource( 2 )
+
 [sub_resource type="TileSet" id=75]
 0/name = "empty.png 0"
 0/texture = ExtResource( 10 )
@@ -278,30 +305,6 @@ font_data = SubResource( 20 )
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
-
-[sub_resource type="StyleBoxFlat" id=44]
-bg_color = Color( 0.207843, 0.360784, 0.490196, 1 )
-
-[sub_resource type="StyleBoxFlat" id=45]
-bg_color = Color( 0.14902, 0.258824, 0.34902, 1 )
-
-[sub_resource type="StyleBoxTexture" id=43]
-texture = ExtResource( 19 )
-region_rect = Rect2( 0, 0, 120, 30 )
-
-[sub_resource type="Theme" id=37]
-HSlider/icons/grabber = ExtResource( 16 )
-HSlider/icons/grabber_highlight = ExtResource( 16 )
-HSlider/styles/grabber_area = SubResource( 44 )
-HSlider/styles/grabber_area_highlight = SubResource( 45 )
-HSlider/styles/slider = SubResource( 43 )
-
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://assets/Roboto-Black.ttf"
-
-[sub_resource type="DynamicFont" id=74]
-size = 32
-font_data = SubResource( 2 )
 
 [sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/Roboto-Black.ttf"
@@ -1751,8 +1754,9 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 630, 60 )
 
 [node name="FilledCellLabel" type="Label" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/FilledCell"]
+margin_top = 5.0
 margin_right = 315.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = ExtResource( 17 )
 text = "Filled Cell:"
@@ -1761,17 +1765,25 @@ valign = 1
 
 [node name="FilledCellColorPicker" type="ColorPickerButton" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/FilledCell"]
 margin_left = 315.0
+margin_top = 5.0
 margin_right = 630.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = SubResource( 84 )
 edit_alpha = false
 
-[node name="Empty1" type="Control" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_left = 634.0
 margin_right = 1264.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 630, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer"]
+margin_left = 291.0
+margin_top = 6.0
+margin_right = 339.0
+margin_bottom = 54.0
+texture = ExtResource( 27 )
 
 [node name="XCell" type="Control" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_top = 64.0
@@ -1780,8 +1792,9 @@ margin_bottom = 124.0
 rect_min_size = Vector2( 630, 60 )
 
 [node name="XCellLabel" type="Label" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/XCell"]
+margin_top = 5.0
 margin_right = 315.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = ExtResource( 17 )
 text = "X Cell:"
@@ -1790,17 +1803,27 @@ valign = 1
 
 [node name="XCellColorPicker" type="ColorPickerButton" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/XCell"]
 margin_left = 315.0
+margin_top = 5.0
 margin_right = 630.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = SubResource( 84 )
 edit_alpha = false
 
-[node name="Empty2" type="Control" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_left = 634.0
 margin_top = 64.0
 margin_right = 1264.0
 margin_bottom = 124.0
+rect_min_size = Vector2( 315, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer2"]
+margin_left = 291.0
+margin_top = 6.0
+margin_right = 339.0
+margin_bottom = 54.0
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 28 )
 
 [node name="NumberCell" type="Control" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_top = 128.0
@@ -1809,8 +1832,9 @@ margin_bottom = 188.0
 rect_min_size = Vector2( 630, 60 )
 
 [node name="NumberCellLabel" type="Label" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/NumberCell"]
+margin_top = 5.0
 margin_right = 315.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = ExtResource( 17 )
 text = "Number Cell:"
@@ -1819,25 +1843,27 @@ valign = 1
 
 [node name="NumberCellColorPicker" type="ColorPickerButton" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/NumberCell"]
 margin_left = 315.0
+margin_top = 5.0
 margin_right = 630.0
-margin_bottom = 50.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = SubResource( 84 )
 edit_alpha = false
 
-[node name="Empty3" type="Control" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
+[node name="CenterContainer3" type="CenterContainer" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_left = 634.0
 margin_top = 128.0
 margin_right = 1264.0
 margin_bottom = 188.0
+rect_min_size = Vector2( 315, 0 )
 
-[node name="TileMap" type="TileMap" parent="Screens/Options Screen/TabContainer/Graphics"]
-position = Vector2( 0, 12 )
-scale = Vector2( 3, 3 )
-tile_set = SubResource( 75 )
-cell_size = Vector2( 16, 22 )
-format = 1
-tile_data = PoolIntArray( 14, 6, 0, 65550, 2, 0, 131086, 3, 0 )
+[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer3"]
+margin_left = 291.0
+margin_top = 6.0
+margin_right = 339.0
+margin_bottom = 54.0
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 29 )
 
 [node name="Controls" type="Tabs" parent="Screens/Options Screen/TabContainer"]
 visible = false
