@@ -46,15 +46,15 @@ config/windows_native_icon="res://favicon.ico"
 
 [autoload]
 
-Game="*res://Scripts/game.gd"
-Levels="*res://Scripts/levels.gd"
+Game="*res://global/game.gd"
+Levels="*res://global/levels.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
-Save="*res://Scripts/save.gd"
-AudioPlayer="*res://nodes/Audio Player.tscn"
-Globals="*res://Scripts/globals.gd"
+Save="*res://global/save.gd"
+AudioPlayer="*res://global/Audio Player.tscn"
+Globals="*res://global/globals.gd"
 
 [display]
 
