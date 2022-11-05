@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Audio Player.gd" type="Script" id=1]
+
+[node name="Audio Player" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sound Effects Player" type="AudioStreamPlayer" parent="."]
+
+[node name="Background Player" type="AudioStreamPlayer" parent="."]
