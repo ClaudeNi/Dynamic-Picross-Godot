@@ -1,11 +1,11 @@
 extends Control
 
-onready var bg_slider = $Options/VolumeSliders/BackgroundMusic/BackgroundSlider
-onready var bg_label = $Options/VolumeSliders/BackgroundMusic/BackgroundLabel
-onready var se_slider = $Options/VolumeSliders/SoundEffects/SoundEffectsSlider
-onready var se_label = $Options/VolumeSliders/SoundEffects/SoundEffectsLabel
+onready var bg_slider = $TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox/Background/BackgroundSlider
+onready var bg_label = $TabContainer/Audio/MarginContainer/GridContainer/BackgroundMusicHBox/BackgroundLabel
+onready var se_slider = $TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox/SoundEffects/SoundEffectsSlider
+onready var se_label = $TabContainer/Audio/MarginContainer/GridContainer/SoundEffectsHBox/SoundEffectsLabel
 
-onready var AreYouSure = $Options/Delete/AreYouSure
+onready var AreYouSure = $TabContainer/General/MarginContainer/GridContainer/AreYouSure
 onready var HowTo = $Options/HowToPlay/HowTo
 
 func _ready():

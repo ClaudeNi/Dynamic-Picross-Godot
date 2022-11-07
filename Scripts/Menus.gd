@@ -10,6 +10,11 @@ func _ready():
 	Globals.circle = circle
 	for btn in get_tree().get_nodes_in_group("Level_Btn"):
 		btn.connect("pressed", self, "select_level", [btn])
+	for node in get_tree().get_nodes_in_group("Color_Changer"):
+		Globals.color_nodes.append(node)
+		node.material.set("shader_param/NEWCELLCOLOR", Save.game_data["cell_color"])
+		node.material.set("shader_param/NEWXCOLOR", Save.game_data["x_color"])
+		node.material.set("shader_param/NEWNUMBERCOLOR", Save.game_data["number_color"])
 
 func quit_game():
 	get_tree().quit()	
@@ -63,3 +68,26 @@ func _on_LevelBack_pressed():
 #	lvls.add_child(new_lvl)
 #func pr():
 #	print("test")
+
+
+func _on_FilledCellColorPicker_color_changed(color):
+	color = color.to_html()
+	print(color)
+	for node in Globals.color_nodes:
+		node.material.set("shader_param/NEWCELLCOLOR", color)
+	Save.game_data["cell_color"] = color
+	Save.save_data()
+
+
+func _on_XCellColorPicker_color_changed(color):
+	for node in Globals.color_nodes:
+		node.material.set("shader_param/NEWXCOLOR", color)
+	Save.game_data["x_color"] = color
+	Save.save_data()
+	
+
+func _on_NumberCellColorPicker_color_changed(color):
+	for node in Globals.color_nodes:
+		node.material.set("shader_param/NEWNUMBERCOLOR", color)
+	Save.game_data["number_color"] = color
+	Save.save_data()
