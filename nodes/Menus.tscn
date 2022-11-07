@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Scripts/Level Selector Button.gd" type="Script" id=1]
 [ext_resource path="res://assets/options/question mark.png" type="Texture" id=2]
@@ -29,6 +29,17 @@
 [ext_resource path="res://assets/options/fill 3x.png" type="Texture" id=27]
 [ext_resource path="res://assets/options/crossed 3x.png" type="Texture" id=28]
 [ext_resource path="res://assets/options/number 3x.png" type="Texture" id=29]
+[ext_resource path="res://resources/change color.tres" type="Shader" id=30]
+[ext_resource path="res://Scripts/ColorPicker.gd" type="Script" id=31]
+
+[sub_resource type="ShaderMaterial" id=85]
+shader = ExtResource( 30 )
+shader_param/OLDCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/OLDXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/OLDNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+shader_param/NEWCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/NEWXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/NEWNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
 
 [sub_resource type="TileSet" id=9]
 0/name = "empty.png 0"
@@ -182,6 +193,33 @@ font_data = SubResource( 20 )
 
 [sub_resource type="Theme" id=84]
 
+[sub_resource type="ShaderMaterial" id=87]
+shader = ExtResource( 30 )
+shader_param/OLDCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/OLDXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/OLDNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+shader_param/NEWCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/NEWXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/NEWNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+
+[sub_resource type="ShaderMaterial" id=88]
+shader = ExtResource( 30 )
+shader_param/OLDCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/OLDXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/OLDNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+shader_param/NEWCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/NEWXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/NEWNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+
+[sub_resource type="ShaderMaterial" id=89]
+shader = ExtResource( 30 )
+shader_param/OLDCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/OLDXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/OLDNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+shader_param/NEWCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/NEWXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/NEWNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+
 [sub_resource type="StyleBoxFlat" id=44]
 bg_color = Color( 0.207843, 0.360784, 0.490196, 1 )
 
@@ -205,6 +243,15 @@ font_path = "res://assets/Roboto-Black.ttf"
 [sub_resource type="DynamicFont" id=74]
 size = 32
 font_data = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=86]
+shader = ExtResource( 30 )
+shader_param/OLDCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/OLDXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/OLDNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
+shader_param/NEWCELLCOLOR = Color( 0.207843, 0.360784, 0.490196, 1 )
+shader_param/NEWXCOLOR = Color( 0.356863, 0.403922, 0.439216, 1 )
+shader_param/NEWNUMBERCOLOR = Color( 0.972549, 0.694118, 0.584314, 1 )
 
 [sub_resource type="TileSet" id=75]
 0/name = "empty.png 0"
@@ -1017,7 +1064,8 @@ margin_bottom = 163.0
 theme = ExtResource( 5 )
 text = "Quit Game"
 
-[node name="TileMap" type="TileMap" parent="Screens/Main Menu Screen"]
+[node name="TileMap" type="TileMap" parent="Screens/Main Menu Screen" groups=["Color_Changer"]]
+material = SubResource( 85 )
 tile_set = SubResource( 9 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -1770,7 +1818,10 @@ margin_right = 630.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = SubResource( 84 )
+color = Color( 0.207843, 0.360784, 0.490196, 1 )
 edit_alpha = false
+script = ExtResource( 31 )
+changer = "cell"
 
 [node name="CenterContainer" type="CenterContainer" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_left = 634.0
@@ -1778,7 +1829,8 @@ margin_right = 1264.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 630, 0 )
 
-[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer" groups=["Color_Changer"]]
+material = SubResource( 87 )
 margin_left = 291.0
 margin_top = 6.0
 margin_right = 339.0
@@ -1808,7 +1860,10 @@ margin_right = 630.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = SubResource( 84 )
+color = Color( 0.356863, 0.403922, 0.439216, 1 )
 edit_alpha = false
+script = ExtResource( 31 )
+changer = "x"
 
 [node name="CenterContainer2" type="CenterContainer" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_left = 634.0
@@ -1817,7 +1872,8 @@ margin_right = 1264.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 315, 0 )
 
-[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer2"]
+[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer2" groups=["Color_Changer"]]
+material = SubResource( 88 )
 margin_left = 291.0
 margin_top = 6.0
 margin_right = 339.0
@@ -1848,7 +1904,10 @@ margin_right = 630.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 315, 50 )
 theme = SubResource( 84 )
+color = Color( 0.972549, 0.694118, 0.584314, 1 )
 edit_alpha = false
+script = ExtResource( 31 )
+changer = "number"
 
 [node name="CenterContainer3" type="CenterContainer" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer"]
 margin_left = 634.0
@@ -1857,7 +1916,8 @@ margin_right = 1264.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 315, 0 )
 
-[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer3"]
+[node name="TextureRect" type="TextureRect" parent="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/CenterContainer3" groups=["Color_Changer"]]
+material = SubResource( 89 )
 margin_left = 291.0
 margin_top = 6.0
 margin_right = 339.0
@@ -2103,7 +2163,8 @@ text = "10"
 align = 1
 valign = 1
 
-[node name="TileMap" type="TileMap" parent="Screens/Level Screen/nums"]
+[node name="TileMap" type="TileMap" parent="Screens/Level Screen/nums" groups=["Color_Changer"]]
+material = SubResource( 86 )
 scale = Vector2( 3, 3 )
 tile_set = SubResource( 75 )
 cell_size = Vector2( 16, 16 )
@@ -2229,6 +2290,9 @@ current = true
 [connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/Delete/DeleteBtn" to="Screens/Options Screen" method="_on_DeleteBtn_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure/NoBtn" to="Screens/Options Screen" method="_on_NoBtn_pressed"]
 [connection signal="pressed" from="Screens/Options Screen/TabContainer/General/MarginContainer/GridContainer/AreYouSure/YesBtn" to="Screens/Options Screen" method="_on_YesBtn_pressed"]
+[connection signal="color_changed" from="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/FilledCell/FilledCellColorPicker" to="." method="_on_FilledCellColorPicker_color_changed"]
+[connection signal="color_changed" from="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/XCell/XCellColorPicker" to="." method="_on_XCellColorPicker_color_changed"]
+[connection signal="color_changed" from="Screens/Options Screen/TabContainer/Graphics/MarginContainer/GridContainer/NumberCell/NumberCellColorPicker" to="." method="_on_NumberCellColorPicker_color_changed"]
 [connection signal="mouse_exited" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_mouse_exited"]
 [connection signal="value_changed" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/BackgroundMusic/BackgroundSlider" to="Screens/Options Screen" method="_on_BackgroundSlider_value_changed"]
 [connection signal="mouse_exited" from="Screens/Options Screen/TabContainer/Audio/VolumeSliders/SoundEffects/SoundEffectsSlider" to="Screens/Options Screen" method="_on_SoundEffectsSlider_mouse_exited"]
