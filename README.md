@@ -2,7 +2,7 @@ Dynamic Picross Game
 
 https://claude-ni.itch.io/picross
 
-## A Picross game made using Godot
+## A Picross game made using Godot 3.5
 
 ![Banner](https://raw.githubusercontent.com/ClaudeNi/Dynamic-Picross-Godot/main/readme%20imgs/picross%20banner.png)
 
